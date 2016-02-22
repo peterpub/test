@@ -1,0 +1,560 @@
+<html class="devsite" lang="en"><head><script src="https://www.google-analytics.com/plugins/ua/linkid.js" type="text/javascript" async=""></script><script src="//www.google-analytics.com/analytics.js" async=""></script><script>var a=window.devsite||{};window.devsite=a;a.readyCallbacks=[];window.devsite.readyCallbacks=a.readyCallbacks;a.ready=function(b){a.readyCallbacks.push(b)};window.devsite.ready=a.ready;
+</script><meta charset="utf-8"><meta name="xsrf_token" content="LYM33GZ44usY1SbJi5zSbSsqrDy1j6I4zdZ66Xwly186MTQ1NjE3OTYzOTcyMzYyMA"><link href="https://developers.google.com/webmasters/ajax-crawling/docs/specification" rel="canonical"><link href="https://developers.google.com/webmasters/ajax-crawling/docs/specification" rel="alternate" hreflang="en"><link href="https://developers.google.com/_static/7dd4f752d7/images/favicon.png" rel="shortcut icon"><meta name="viewport" content="width=device-width, initial-scale=1"><link href="https://plus.google.com/+GoogleDevelopers/" rel="publisher"><link href="//fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,700|Material+Icons" rel="stylesheet"><link href="https://developers.google.com/_static/7dd4f752d7/css/devsite-google-blue.css" rel="stylesheet"><link href="https://developers.google.com/_static/7dd4f752d7/images/touch-icon.png" rel="apple-touch-icon"><link aria-label="Google Developers" href="https://developers.google.com/s/opensearch.xml" rel="search" type="application/opensearchdescription+xml" data-tooltip-align="b,c" data-tooltip="Google Developers" data-title="Google Developers"><script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script><meta content="Google Developers" property="og:site_name"><meta content="website" property="og:type"><meta content="https://developers.google.com/webmasters/ajax-crawling/docs/specification" property="og:url"><meta content="en" property="og:locale"><script>
+    var ___gcfg = ___gcfg || {};
+    ___gcfg.lang = 'en';
+  </script><title>Full Specification &nbsp;|&nbsp;
+      AJAX Crawling (Deprecated) &nbsp;|&nbsp;
+      Google Developers</title><meta content="Full Specification" property="og:title"></head><body class="devsite-doc-page no-touch" id="top_of_page">
+
+<div style="background: yellow; position: fixed; x: 20px; y: 20px;">Cached from url: <a href="https://developers.google.com/webmasters/ajax-crawling/docs/specification">https://developers.google.com/webmasters/ajax-crawling/docs/specification</a> </div><div class="devsite-wrapper" style="margin-top: 56px;"><header class="devsite-top-section nocontent&#10;               " style="position: static;"><div class="devsite-top-logo-row-wrapper-wrapper" style="position: fixed;"><div class="devsite-top-logo-row-wrapper"><div class="devsite-top-logo-row devsite-full-site-width"><a class="devsite-logo gc-analytics-event" href="https://developers.google.com/" data-label="Site logo" data-category="Site-Wide Custom Events"><div class="devsite-logo-icon"></div><div class="devsite-logo-wordmark"></div></a><div class="devsite-search-wrapper devsite-history-enabled"><form class="devsite-search-form" id="top-search" action="https://developers.google.com/s/results/" method="GET"><div class="devsite-searchbox" id="searchbox"><span class="devsite-search-chip" aria-label="Restrict search to AJAX Crawling (Deprecated)" data-tooltip-align="b,c" data-tooltip="Restrict search to AJAX Crawling (Deprecated)">AJAX Crawling (Deprecated)<span class="devsite-search-chip-close material-icons"></span></span><input name="q" class="devsite-search-field devsite-search-query" type="text" placeholder="Search" value="" autocomplete="off"><div class="devsite-search-image material-icons"></div></div><input name="p" id="search_project" type="hidden" value="/webmasters/ajax-crawling" data-query-match="" data-project-path="/webmasters/ajax-crawling" data-project-name="AJAX Crawling (Deprecated)"><input id="suggest-category-label-2" type="hidden" value="Pages in AJAX Crawling (Deprecated)"><input id="suggest-category-label-3" type="hidden" value="Reference in AJAX Crawling (Deprecated)"><input id="suggest-category-label-1" type="hidden" value="Products"><input id="suggest-all-results-label" type="hidden" value="See all results for"><div class="devsite-popout devsite-popout-closed"><div class="devsite-suggest-container" style="display: none;"><div class="devsite-suggest-wrapper" style="display: none;"><div class="devsite-suggest-side-column"><div class="devsite-suggest-icon material-icons"></div></div><div class="devsite-suggest-main-column"><div class="devsite-suggest-column devsite-nav" id="devsite-recent-column"><div class="devsite-suggest-results"></div></div></div></div></div><div class="devsite-history-container"><div class="devsite-history-wrapper"><div class="devsite-history-side-column"><div class="devsite-history-icon material-icons"></div></div><div class="devsite-history-main-column">Sign in to see the pages you visit often.<div class="devsite-history-footer"><a class="devsite-history-preferences-link button button-white" href="//myaccount.google.com/privacy#accounthistory">History Preferences</a></div></div></div></div></div></form></div><div class="devsite-user-wrapper"><a class="devsite-user-signin devsite-top-button button gc-analytics-event" href="https://www.google.com/accounts/ServiceLogin?passive=true&amp;continue=https%3A%2F%2Fdevelopers.google.com%2Fwebmasters%2Fajax-crawling%2Fdocs%2Fspecification&amp;service=ahsid" data-label="Sign in button" data-category="Site-Wide Custom Events">
+    
+    Sign in
+  </a></div><button class="devsite-search-button button-flat material-icons" type="button"></button></div></div></div><div class="devsite-collapsible-section" style="margin-top: 0px;"><div class="devsite-header-background devsite-full-site-width"><div class="devsite-site-nav-row devsite-full-site-width" style="visibility: visible;"><nav class="devsite-site-nav devsite-nav"><ul class="devsite-site-nav-list"><li class="devsite-breadcrumb-wrapper&#10;                &#10;                       devsite-breadcrumb-parent&#10;                "><a class="devsite-breadcrumb gc-analytics-event" href="https://developers.google.com/products/" data-label="Breadcrumb: parent" data-category="Site-Wide Custom Events" data-value="1">
+                Products
+              </a></li><li class="devsite-breadcrumb-wrapper&#10;                &#10;                       devsite-breadcrumb-parent&#10;                "><div class="devsite-breadcrumb-guillemet material-icons"></div><a class="devsite-breadcrumb gc-analytics-event" href="https://developers.google.com/search" data-label="Breadcrumb: parent" data-category="Site-Wide Custom Events" data-value="2">
+                Search
+              </a></li><li class="devsite-breadcrumb-wrapper&#10;                &#10;                       devsite-breadcrumb-parent&#10;                "><div class="devsite-breadcrumb-guillemet material-icons"></div><a class="devsite-breadcrumb gc-analytics-event" href="https://developers.google.com/webmasters/" data-label="Breadcrumb: parent" data-category="Site-Wide Custom Events" data-value="3">
+                Webmasters
+              </a></li><li class="devsite-breadcrumb-wrapper&#10;                &#10;                       devsite-breadcrumb-project&#10;                "><div class="devsite-breadcrumb-guillemet material-icons"></div><a class="devsite-breadcrumb gc-analytics-event" href="https://developers.google.com/webmasters/ajax-crawling/docs/" data-label="Breadcrumb: project" data-category="Site-Wide Custom Events" data-value="4">
+                AJAX Crawling (Deprecated)
+              </a></li><li class="devsite-breadcrumb-wrapper&#10;                &#10;                       devsite-breadcrumb-tab&#10;                "><div class="devsite-breadcrumb-guillemet material-icons"></div><a class="devsite-breadcrumb gc-analytics-event" href="https://developers.google.com/webmasters/googleforwebmasters/" data-label="Breadcrumb: tab" data-category="Site-Wide Custom Events" data-value="5">
+                Guides
+              </a></li></ul></nav></div><div class="devsite-product-id-row devsite-full-site-width" style="visibility: visible;"><div class="devsite-product-id-row-links-container"><a class="devsite-product-name gc-analytics-event" href="https://developers.google.com/webmasters/ajax-crawling/docs/" data-label="Project name (header)" data-category="Site-Wide Custom Events">
+      AJAX Crawling (Deprecated)
+    </a></div></div><div class="devsite-doc-set-nav-row devsite-full-site-width"><nav class="devsite-doc-set-nav devsite-nav"><ul class="devsite-doc-set-nav-tab-list"><li class="devsite-doc-set-nav-tab-container"><a class="&#10;                devsite-doc-set-nav-tab gc-analytics-event" href="https://developers.google.com/webmasters/ajax-crawling/docs/" data-label="Tab: Home" data-category="Site-Wide Custom Events">
+        Home
+      </a></li><li class="devsite-doc-set-nav-tab-container"><a class="devsite-doc-set-nav-active&#10;                devsite-doc-set-nav-tab gc-analytics-event" href="https://developers.google.com/webmasters/googleforwebmasters/" data-label="Tab: Guides" data-category="Site-Wide Custom Events">
+        Guides
+      </a></li><li class="devsite-doc-set-nav-tab-container"><a class="&#10;                devsite-doc-set-nav-tab gc-analytics-event" href="https://developers.google.com/webmasters/support" data-label="Tab: Support" data-category="Site-Wide Custom Events">
+        Support
+      </a></li></ul></nav></div></div></div></header><script>
+  if (window.jQuery) {
+    $(document).ready(function() {
+      if (window.devsite && window.devsite.search) {
+        
+        window.devsite.search.init('en', false, null)
+      }
+    });
+  }
+</script><div id="gc-wrapper" itemtype="http://schema.org/Article" itemscope=""><input class="google-analytics-id-json" type="hidden" value='{"dimensions": {"dimension6": "en", "dimension4": "AJAX Crawling (Deprecated)", "dimension5": "en", "dimension3": false, "dimension1": "Signed out", "dimension8": null}, "gaid": "UA-24532603-1"}'><input class="google-analytics-id-json" type="hidden" value='{"dimensions": {"dimension6": "en", "dimension4": "AJAX Crawling (Deprecated)", "dimension5": "en", "dimension3": false, "dimension1": "Signed out", "dimension8": null}, "gaid": "UA-49880327-1"}'>
+
+      
+        <div class="devsite-article-mask"></div>
+        <div class="devsite-site-mask"></div>
+        
+          
+  <nav tabindex="0" class="devsite-section-nav-responsive devsite-nav nocontent" style="left: -256px;">
+    <ul><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/googleforwebmasters/" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="0" track-name="titleLink" track-type="leftNav"><span>Webmaster EDU</span></a></li><li class="devsite-nav-item devsite-nav-item-heading"><a class="devsite-nav-title devsite-nav-title-no-path " track-metadata-position="0" track-name="expandNavSectionNoLink" track-type="leftNav"><span>Video Search</span></a><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/videosearch/" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>Overview</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/videosearch/intro" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>Introduction to Video Markup</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/videosearch/schema" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>Schema.<wbr>org for Videos</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/videosearch/sitemaps" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>Video Sitemaps</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/videosearch/markups" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>Alternate Markups for Videos</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/videosearch/testing" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>Testing your video markup</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/videosearch/notifying" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>Notifying Google of Video Updates</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/videosearch/platformrestrictions" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>Video Platform Restrictions</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/videosearch/countryrestrictions" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>Video Country Restrictions</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/videosearch/indexing" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>Common Video Indexing Pitfalls</span></a></li><li class="devsite-nav-item devsite-nav-item-heading"><a class="devsite-nav-title devsite-nav-title-no-path " track-metadata-position="0" track-name="expandNavSectionNoLink" track-type="leftNav"><span>Controlling Crawling and Indexing</span></a><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/control-crawl-index/" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>Overview</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/control-crawl-index/docs/getting_started" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>Getting Started</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/control-crawl-index/docs/robots_txt" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>Robots.<wbr>txt</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/control-crawl-index/docs/robots_meta_tag" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>Robots Meta Tag and X-Robots-Tag</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/control-crawl-index/docs/references" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>References</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/control-crawl-index/docs/faq" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>FAQ</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/control-crawl-index/docs/apis-google" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>APIs-Google User Agent</span></a></li><li class="devsite-nav-item devsite-nav-external devsite-nav-has-status"><a class="devsite-nav-title gc-analytics-event " href="https://support.google.com/webmasters/answer/1061943" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span class="devsite-nav-text"><span>Google's Crawlers</span></span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" aria-label="External" data-tooltip-align="b,c" data-tooltip="External" data-title="External"></span></span></a></li><li class="devsite-nav-item devsite-nav-item-heading"><a class="devsite-nav-title devsite-nav-title-no-path " track-metadata-position="0" track-name="expandNavSectionNoLink" track-type="leftNav"><span>Mobile Friendly Websites</span></a><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/mobile-sites/" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>Overview</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/mobile-sites/get-started" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>Getting Started</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/mobile-sites/mobile-seo" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>Mobile SEO configurations</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/mobile-sites/website-software/" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>Website Software</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/mobile-sites/mobile-seo/common-mistakes/" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>Common Mistakes</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/mobile-sites/faq" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>FAQs</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/mobile-sites/glossary" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>Glossary</span></a></li><li class="devsite-nav-item devsite-nav-external devsite-nav-has-status"><a class="devsite-nav-title gc-analytics-event " href="https://www.google.com/webmasters/tools/mobile-friendly/" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span class="devsite-nav-text"><span>Mobile Friendly Test</span></span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" aria-label="External" data-tooltip-align="b,c" data-tooltip="External" data-title="External"></span></span></a></li></ul>
+  </nav>
+
+        
+        <div class="devsite-main-content clearfix" style="margin-top: 40px;">
+
+        
+        
+          <div class="devsite-banner devsite-banner-announcement">
+            <div class="devsite-banner-inner">
+            This recommendation is <a href="http://googlewebmastercentral.blogspot.com/2015/10/deprecating-our-ajax-crawling-scheme.html">officially deprecated</a> as of October 2015.
+            </div>
+          </div>
+        
+
+        
+  
+  
+    
+    
+      
+  <nav class="devsite-section-nav devsite-nav nocontent" style="left: auto; top: 0px; position: relative; max-height: 1272px;">
+    <ul><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/googleforwebmasters/" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="0" track-name="titleLink" track-type="leftNav"><span>Webmaster EDU</span></a></li><li class="devsite-nav-item devsite-nav-item-heading"><a class="devsite-nav-title devsite-nav-title-no-path " track-metadata-position="0" track-name="expandNavSectionNoLink" track-type="leftNav"><span>Video Search</span></a><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/videosearch/" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>Overview</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/videosearch/intro" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>Introduction to Video Markup</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/videosearch/schema" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>Schema.<wbr>org for Videos</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/videosearch/sitemaps" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>Video Sitemaps</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/videosearch/markups" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>Alternate Markups for Videos</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/videosearch/testing" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>Testing your video markup</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/videosearch/notifying" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>Notifying Google of Video Updates</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/videosearch/platformrestrictions" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>Video Platform Restrictions</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/videosearch/countryrestrictions" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>Video Country Restrictions</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/videosearch/indexing" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>Common Video Indexing Pitfalls</span></a></li><li class="devsite-nav-item devsite-nav-item-heading"><a class="devsite-nav-title devsite-nav-title-no-path " track-metadata-position="0" track-name="expandNavSectionNoLink" track-type="leftNav"><span>Controlling Crawling and Indexing</span></a><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/control-crawl-index/" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>Overview</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/control-crawl-index/docs/getting_started" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>Getting Started</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/control-crawl-index/docs/robots_txt" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>Robots.<wbr>txt</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/control-crawl-index/docs/robots_meta_tag" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>Robots Meta Tag and X-Robots-Tag</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/control-crawl-index/docs/references" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>References</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/control-crawl-index/docs/faq" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>FAQ</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/control-crawl-index/docs/apis-google" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>APIs-Google User Agent</span></a></li><li class="devsite-nav-item devsite-nav-external devsite-nav-has-status"><a class="devsite-nav-title gc-analytics-event " href="https://support.google.com/webmasters/answer/1061943" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span class="devsite-nav-text"><span>Google's Crawlers</span></span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" aria-label="External" data-tooltip-align="b,c" data-tooltip="External" data-title="External"></span></span></a></li><li class="devsite-nav-item devsite-nav-item-heading"><a class="devsite-nav-title devsite-nav-title-no-path " track-metadata-position="0" track-name="expandNavSectionNoLink" track-type="leftNav"><span>Mobile Friendly Websites</span></a><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/mobile-sites/" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>Overview</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/mobile-sites/get-started" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>Getting Started</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/mobile-sites/mobile-seo" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>Mobile SEO configurations</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/mobile-sites/website-software/" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>Website Software</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/mobile-sites/mobile-seo/common-mistakes/" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>Common Mistakes</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/mobile-sites/faq" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>FAQs</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title gc-analytics-event " href="https://developers.google.com/webmasters/mobile-sites/glossary" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span>Glossary</span></a></li><li class="devsite-nav-item devsite-nav-external devsite-nav-has-status"><a class="devsite-nav-title gc-analytics-event " href="https://www.google.com/webmasters/tools/mobile-friendly/" data-label="Left nav" data-category="Site-Wide Custom Events" data-action="click" track-metadata-position="1" track-name="titleLink" track-type="leftNav"><span class="devsite-nav-text"><span>Mobile Friendly Test</span></span><span class="devsite-nav-icon-wrapper"><span class="devsite-nav-icon material-icons" aria-label="External" data-tooltip-align="b,c" data-tooltip="External" data-title="External"></span></span></a></li></ul>
+  </nav>
+
+    
+
+    
+  <nav class="devsite-page-nav devsite-nav" style="left: auto; top: 0px; position: relative; max-height: 1272px;"><ul class="devsite-page-nav-list"><li class="devsite-nav-item devsite-nav-item-heading"><a class="devsite-nav-title" href="#top_of_page"><span>Contents</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="#abstract"><span>Abstract</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="#basic-definitions"><span>Basic definitions</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="#bidirectional-between--url-to-_escaped_fragment_-url"><span>Bidirectional between #! URL to _escaped_fragment_ URL</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="#mapping-from--to-_escaped_fragment_--format"><span>Mapping from #! to _escaped_fragment_  format</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="#mapping-from-_escaped_fragment_-format-to--format"><span>Mapping from _escaped_fragment_ format to #! format</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="#escaping-characters-in-the-bidirectional-mapping"><span>Escaping characters in the bidirectional mapping</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="#role-of-the-search-engine-crawler"><span>Role of the Search Engine Crawler</span></a><ul class="devsite-page-nav-list"><li class="devsite-nav-item"><a class="devsite-nav-title" href="#transformation-of-url"><span>Transformation of URL</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="#request"><span>Request</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="#search-result"><span>Search result</span></a></li></ul></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="#role-of-the-application-and-web-server"><span>Role of the application and web server</span></a><ul class="devsite-page-nav-list"><li class="devsite-nav-item"><a class="devsite-nav-title" href="#opting-into-the-ajax-crawling-scheme"><span>Opting into the AJAX crawling scheme</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="#transformation-of-url_1"><span>Transformation of URL</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="#serving-the-html-snapshot-corresponding-to-the-dynamic-page"><span>Serving the HTML snapshot corresponding to the dynamic page</span></a></li></ul></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="#pages-without-hash-fragments"><span>Pages without hash fragments</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="#hyperlinks-and-sitemaps"><span>Hyperlinks and Sitemaps</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="#backward-compatibility-to-current-practice"><span>Backward compatibility to current practice</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="#existing-uses-of-"><span>Existing uses of #!</span></a></li></ul></nav>
+
+
+      <article class="devsite-article">
+        <div class="devsite-article-inner">
+  
+          
+  
+
+
+
+  
+  
+  <div class="devsite-expand-section-nav-container">
+  
+    <button class="devsite-expand-section-nav button-flat material-icons" type="button"></button>
+  
+  
+    <h1 class="devsite-page-title" itemprop="name">
+      Full Specification
+    </h1>
+  
+  </div>
+  
+    <nav class="devsite-page-nav-embedded devsite-nav"><ul class="devsite-page-nav-list"><li class="devsite-nav-item devsite-nav-item-heading"><a class="devsite-nav-title" href="#top_of_page"><span>Contents</span></a><button class="devsite-nav-show-all button-transparent material-icons" aria-label="Expand/collapse contents" type="button" data-tooltip-align="b,c" data-tooltip="Expand/collapse contents" data-title="Expand/collapse contents"></button></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="#abstract"><span>Abstract</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="#basic-definitions"><span>Basic definitions</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="#bidirectional-between--url-to-_escaped_fragment_-url"><span>Bidirectional between #! URL to _escaped_fragment_ URL</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title" href="#mapping-from--to-_escaped_fragment_--format"><span>Mapping from #! to _escaped_fragment_  format</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title devsite-nav-item-hidden" href="#mapping-from-_escaped_fragment_-format-to--format"><span>Mapping from _escaped_fragment_ format to #! format</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title devsite-nav-item-hidden" href="#escaping-characters-in-the-bidirectional-mapping"><span>Escaping characters in the bidirectional mapping</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title devsite-nav-item-hidden" href="#role-of-the-search-engine-crawler"><span>Role of the Search Engine Crawler</span></a><ul class="devsite-page-nav-list"><li class="devsite-nav-item"><a class="devsite-nav-title devsite-nav-item-hidden" href="#transformation-of-url"><span>Transformation of URL</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title devsite-nav-item-hidden" href="#request"><span>Request</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title devsite-nav-item-hidden" href="#search-result"><span>Search result</span></a></li></ul></li><li class="devsite-nav-item"><a class="devsite-nav-title devsite-nav-item-hidden" href="#role-of-the-application-and-web-server"><span>Role of the application and web server</span></a><ul class="devsite-page-nav-list"><li class="devsite-nav-item"><a class="devsite-nav-title devsite-nav-item-hidden" href="#opting-into-the-ajax-crawling-scheme"><span>Opting into the AJAX crawling scheme</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title devsite-nav-item-hidden" href="#transformation-of-url_1"><span>Transformation of URL</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title devsite-nav-item-hidden" href="#serving-the-html-snapshot-corresponding-to-the-dynamic-page"><span>Serving the HTML snapshot corresponding to the dynamic page</span></a></li></ul></li><li class="devsite-nav-item"><a class="devsite-nav-title devsite-nav-item-hidden" href="#pages-without-hash-fragments"><span>Pages without hash fragments</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title devsite-nav-item-hidden" href="#hyperlinks-and-sitemaps"><span>Hyperlinks and Sitemaps</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title devsite-nav-item-hidden" href="#backward-compatibility-to-current-practice"><span>Backward compatibility to current practice</span></a></li><li class="devsite-nav-item"><a class="devsite-nav-title devsite-nav-item-hidden" href="#existing-uses-of-"><span>Existing uses of #!</span></a></li><li class="devsite-nav-title devsite-more-items"><span>.<wbr>.<wbr>.<wbr></span></li></ul></nav>
+  
+  <div class="devsite-article-body clearfix" itemprop="articleBody">
+    
+
+
+
+
+<h2 id="abstract">Abstract</h2>
+
+<p>This document describes an agreement between web servers and search engine crawlers that allows for dynamically created content to be visible to crawlers. Google currently supports this agreement. The hope is that other search engines will also adopt this proposal.
+
+<h2 id="basic-definitions">Basic definitions</h2>
+
+<p><ul>
+<li><b>Web application:</b> In this document, a web application is an AJAX-enabled, interactive web application.
+<li><b>State:</b> While traditional static web sites consist of many pages, a more appropriate term for AJAX applications is "state". An application consists of a number of states, where each state constitutes a specific user experience or a response to user input.  Examples of states: For a mail application, states could be base state, inbox, compose, etc.  For a chess application, states could be base state, start new game, but also current state x of the chessboard, including information about past moves, whose player's turn it is, and so forth.  In an AJAX application, a state often corresponds to a URL with a hash fragment. 
+<li><b>Hash fragments:</b> Traditionally, hash fragments (that is, everything after # in the URL) have been used to indicate one portion of a static HTML document.  By contrast, AJAX applications often use hash fragments in another function, namely to indicate state. For example, when a user navigates to the URL <code>http://www.example.com/ajax.html#key1=value1&amp;key2=value2</code>, the AJAX application will parse the hash fragment and move the application to the "key1=value1&amp;key2=value2" state.  This is similar in spirit to moving to a portion of a static document, that is, the traditional use of hash fragments.  History (the back button) in AJAX applications is generally handled with these hash fragments as well.  Why are hash fragments used in this way? While the same effect could often be achieved with query parameters (for example, <code>?key1=value1&amp;key2=value2</code>), hash fragments have the advantage that in and of themselves, they do not incur an HTTP request and thus no round-trip from the browser to the server and back.  In other words, when navigating from <code>www.example.com/ajax.html</code> to <code>www.example.com/ajax.html#key1=value1&amp;key2=value2</code>, the web application moves to the state <code>key1=value1&amp;key2=value2</code> without a full page refresh.  As such, hash fragments are an important tool in making AJAX applications fast and responsive. Importantly, however, hash fragments are not part of HTTP requests (and as a result they are not sent to the server), which is why our approach must handle them in a new way. See <a href="http://tools.ietf.org/html/rfc3986#section-3.5">RFC 3986</a> for more details on hash fragments.
+<li><b>Query parameters:</b> Query parameters (for example, <code>?s=value</code> in the URL) are used by web sites and applications to post to or obtain information from the server.  They incur a server round-trip and full page reload. In other words, navigating from <code>www.example.com</code> to <code>www.example.com?s=value</code> is handled by an HTTP request to the server and a full page reload. See <a href="http://tools.ietf.org/html/rfc3986#section-3.4">RFC 3986</a> for more details. Query parameters are routinely used in AJAX applications as well.
+<li><b>HTML snapshot:</b> An HTML snapshot is the serialization of the DOM the browser will produce when loading the page, including executing any JavaScript that is needed to get the intial page.
+<li><b>Pretty URL:</b> Any URL containing a hash fragment beginning with <code>!</code>, for example, <code>www.example.com?myquery#!key1=value1&amp;key2=value2</code>
+<li><b>Ugly URL:</b> Any URL containing a query parameter with the key <code>_escaped_fragment_</code>, for example, <code>www.example.com?myquery&amp;_escaped_fragment_=key1=value1%26key2=value2</code>.
+
+</li></ul>
+
+<h2 id="bidirectional-between--url-to-_escaped_fragment_-url">Bidirectional between <code>#!</code> URL to <code>_escaped_fragment_</code> URL</h2>
+
+
+<p>A bidirectional mapping exists between pretty and ugly URLs:
+
+<p>
+<center>
+<b><code>?_escaped_fragment_=key1=value1%26key2=value2</code></b>: used for crawling only, indicates an indexable AJAX app state
+<p>
+<img height="50" src="https://developers.google.com/webmasters/ajax-crawling/docs/images/arrow.png">
+<p>
+<b><code>#!key1=value1&amp;key2=value2</code></b>: used for normal (browser) web site interaction
+</p></center>
+
+<h2 id="mapping-from--to-_escaped_fragment_--format">Mapping from <code>#!</code> to <code>_escaped_fragment_</code>  format</h2>
+
+<p>Each URL that contains a hash fragment beginning with the exclamation mark is considered a <code>#!</code> URL.  Note that any URL may contain <i>at most</i> one hash fragment. Each pretty (<code>#!</code>) URL has a corresponding ugly (<code>_escaped_fragment_</code>) URL, which is derived with the following steps:
+
+<ol>
+<li>The hash fragment becomes part of the query parameters.
+<li>The hash fragment is indicated in the query parameters by preceding it with <code>_escaped_fragment_=</code>
+<li>Some characters are <i>escaped</i> when the hash fragment becomes part of the query parameters. These characters are listed below.
+<ul>
+
+</ul>
+<li>All other parts of the URL (host, port, path, existing query parameters, and so on) remain unchanged.
+</li></ol>
+
+<h2 id="mapping-from-_escaped_fragment_-format-to--format">Mapping from <code>_escaped_fragment_</code> format to <code>#!</code> format</h2>
+
+
+<p>Any URL whose query parameters contain the special token <code>_escaped_fragment_</code> as the last query parameter is considered an <code>_escaped_fragment_</code> URL.  Further, there must only be one <code>_escaped_fragment_</code> in the URL, and it must be the last query parameter. The corresponding <code>#!</code> URL can be derived with the following steps:
+
+<ol>
+<li>Remove from the URL all tokens beginning with <code>_escaped_fragment_=</code> (Note especially that the <code>=</code> must be removed as well).
+<li>Remove from the URL the trailing <code>?</code> or <code>&amp;</code> (depending on whether the URL had query parameters other than <code>_escaped_fragment_</code>).
+<li>Add to the URL the tokens <code>#!</code>.
+<li>Add to the URL all tokens after <code>_escaped_fragment_=</code> after unescaping them.
+</li></ol>
+
+<p>Note: As is explained below, there is a special syntax for pages without hash fragments, but that still contain dynamic Ajax content.  For those pages, to map from the <code>_escaped_fragment_</code> URL to the original URL, omit steps 3 and 4 above.
+
+
+<h2 id="escaping-characters-in-the-bidirectional-mapping">Escaping characters in the bidirectional mapping</h2>
+
+<p>
+The following characters will be escaped when moving the hash fragment string to the query parameters of the URL, and must be unescaped by the web server to obtain the original URL:
+
+<ul>
+<li>%00..20
+<li>%23
+<li>%25..26
+<li>%2B
+<li>%7F..FF
+</li></ul>
+
+<p>Control characters (0x00..1F and 0x7F) should be avoided. Non-ASCII text will be converted to UTF-8 before escaping.
+
+<h2 id="role-of-the-search-engine-crawler">Role of the Search Engine Crawler</h2>
+
+<h3 id="transformation-of-url">Transformation of URL</h3>
+<p>
+<ol>
+<li>URLs of the format <code>domain[:port]/path#!hashfragment</code>, for example, <code>www.example.com#!key1=value1&amp;key2=value2</code> are
+<i>temporarily</i> transformed into <code>domain[:port]/path?_escaped_fragment_=hashfragment</code>, such as <code>www.example.com?_escaped_fragment_=key1=value1%26key2=value2</code>.  In other words, a hash fragment beginning with an exclamation mark ('!') is turned into a query parameter. We refer to the former as "pretty URLs" and to the latter as "ugly URLs".
+<li>URLs of the format <code>domain[:port]/path?queryparams#!hashfragment</code> (for example, <code>www.example.com?user=userid#!key1=value1&amp;key2=value2</code>) are <i>temporarily</i> transformed into  <code>domain[:port]/path?queryparams&amp;_escaped_fragment_=hashfragment</code> (for the above example, <code>www.example.com?user=userid&amp;_escaped_fragment_=key1=value1%26key2=value2</code>).  In other words, a hash fragment beginning with an exclamation mark ('!') is made part of the existing query parameters by adding a query parameter with the key "_escaped_fragment_" and the value of the hash fragment without the "!". As in this case the URL already contains query parameters, the new query parameter is delimited from the existing ones with the standard delimiter '&amp;'. We refer to the former <code>#!</code> as "pretty URLs" and to the latter <code>_escaped_fragment_</code> URLs as "ugly URLs".
+<li>Some characters are <i>escaped</i> when making a hash fragment part of the query parameters. See the previous section for more information.
+<li>If a page has no hash fragments, but contains <code>&lt;meta name="fragment" content="!"&gt;</code> in the <code>&lt;head&gt;</code> of the HTML, the crawler will transform the URL of this page from <code>domain[:port]/path</code> to <code>domain[:port]/path?_escaped_fragment=</code> (or <code>domain[:port]/path?queryparams</code> to <code>domain[:port]/path?queryparams&amp;_escaped_fragment_=</code> and will then access the transformed URL. For example, if <code>www.example.com</code> contains <code>&lt;meta name="fragment" content="!"&gt;</code> in the head, the crawler will transform this URL into <code>www.example.com?_escaped_fragment_=</code> and fetch <code>www.example.com?_escaped_fragment_=</code> from the web server.
+</li></ol>
+
+<h3 id="request">Request</h3>
+<p>
+The crawler agrees to request from the server ugly URLs of the format:
+
+<ul>
+<li><code>domain[:port]/path?_escaped_fragment_=hashfragment</code>
+<li><code>domain[:port]/path?queryparams&amp;_escaped_fragment_=hashfragment</code>
+<li><code>domain[:port]/path?_escaped_fragment_=</code>
+<li><code>domain[:port]/path?queryparams&amp;_escaped_fragment_=</code>
+</li></ul>
+
+<h3 id="search-result">Search result</h3>
+<p>
+The search engine agrees to display in the search results the corresponding pretty URLs:
+
+<ul>
+<li><code>domain[:port]/path#!hashfragment</code>
+<li><code>domain[:port]/path?queryparams#!hashfragment</code>
+<li><code>domain[:port]/path</code>
+<li><code>domain[:port]/path?queryparams</code>
+</li></ul>
+
+
+<h2 id="role-of-the-application-and-web-server">Role of the application and web server</h2>
+
+<h3 id="opting-into-the-ajax-crawling-scheme">Opting into the AJAX crawling scheme</h3>
+<p>The application must opt into the AJAX crawling scheme to notify the crawler to request ugly URLs. An application can opt in with either or both of the following:
+
+<ul>
+<li>Use <code>#!</code> in your site's hash fragments.
+<li>Add a trigger to the head of the HTML of a page without a hash fragment (for example, your home page): 
+<p>
+<center>
+<pre class="prettyprint"><div class="gc-analytics-event material-icons devsite-click-to-copy-button" aria-label="Click to copy" data-label="Click To Copy" data-category="Site-Wide Custom Events" track-name="clickToCopy" track-type="exampleCode" data-tooltip-align="b,c" data-tooltip="Click to copy" data-title="Click to copy"></div><span class="tag">&lt;meta</span><span class="pln"> </span><span class="atn">name</span><span class="pun">=</span><span class="atv">"fragment"</span><span class="pln"> </span><span class="atn">content</span><span class="pun">=</span><span class="atv">"!"</span><span class="tag">&gt;</span></pre>
+</center>
+</li></ul>
+
+<p>Once the scheme is implemented, AJAX URLs containing hash fragments with <code>#!</code> are eligible to be crawled and indexed by the search engine.
+
+<h3 id="transformation-of-url_1">Transformation of URL</h3>
+<p>In response to a request of a URL that contains <code>_escaped_fragment_</code> (which should always be a request from a crawler), the server agrees to return an HTML snapshot of the corresponding pretty <code>#!</code> URL. See above for the mapping between  <code>_escaped_fragment_</code> (ugly) URLs and <code>#!</code> (pretty) URLs.
+
+
+<h3 id="serving-the-html-snapshot-corresponding-to-the-dynamic-page">Serving the HTML snapshot corresponding to the dynamic page</h3>
+
+<p>In response to an <code>_escaped_fragment_</code> URL, the origin server agrees to return to the crawler an HTML snapshot of the corresponding <code>#!</code> URL. The HTML snapshot must contain the same content as the dynamically created page.
+
+<p>HTML snapshots can be obtained in an offline process or dynamically in response to a crawler request.  For a guide on producing an HTML snapshot, see the <a href="https://developers.google.com/webmasters/ajax-crawling/docs/html-snapshot">HTML snapshot</a> section.
+
+
+<h2 id="pages-without-hash-fragments">Pages without hash fragments</h2><a name="MetaTag"></a>
+<p>It may be impossible or undesirable for some pages to have hash fragments in their URLs.  For this reason, this scheme has a special provision for such pages: in order to indicate that a page without a hash fragment should be crawled again in <code>_escaped_fragment_</code> form, it is possible to embed a special meta tag into the head of its HTML.
+
+The syntax for this meta tag is as follows:
+
+<p>
+<center>
+<pre class="prettyprint"><div class="gc-analytics-event material-icons devsite-click-to-copy-button" aria-label="Click to copy" data-label="Click To Copy" data-category="Site-Wide Custom Events" track-name="clickToCopy" track-type="exampleCode" data-tooltip-align="b,c" data-tooltip="Click to copy" data-title="Click to copy"></div><span class="tag">&lt;meta</span><span class="pln"> </span><span class="atn">name</span><span class="pun">=</span><span class="atv">"fragment"</span><span class="pln"> </span><span class="atn">content</span><span class="pun">=</span><span class="atv">"!"</span><span class="tag">&gt;</span></pre>
+</center>
+
+<p>The following important restrictions apply:
+<ol>
+<li>The meta tag may only appear in pages without hash fragments.
+<li>Only "!" may appear in the <tt>content</tt> field.
+<li>The meta tag must appear in the head of the document.
+</li></ol>
+
+<p>The crawler treats this meta tag as follows: If the page <code>www.example.com</code> contains the meta tag in its head, the crawler will retrieve the URL <code>www.example.com?_escaped_fragment_=</code>.  It will index the content of the page as <code>www.example.com</code> and will display <code>www.example.com</code> in search results.
+
+<p>As noted above, the mapping from the <code>_escaped_fragment_</code> to the <code>#!</code> syntax is slightly different in this case: to retrieve the original URL, the web server instead simply removes the tokens <code>_escaped_fragment_=</code> (note the <code>=</code>) from the URL. In other words, you want to end up with the URL <code>www.example.com</code> instead of <code>www.example.com#!</code>.
+
+<p class="warning"><b>Warning:</b> Should the content for <code>www.example.com?_escaped_fragment_=</code> return a 404 code, no content will be indexed for <code>www.example.com</code>! So, be careful if you add this meta tag to your page and make sure an HTML snapshot is returned.</p>
+
+<h2 id="hyperlinks-and-sitemaps">Hyperlinks and Sitemaps</h2>
+
+<p>In order to crawl your site's URLs, a crawler must be able to find them. Here are two common ways to accomplish this:
+<ol>
+<li><b>Hyperlinks:</b> An HTML page or an HTML snapshot can contain hyperlinks to pretty URLs, that is, URLs containing <code>#!</code> hash fragments.  Note: The crawler will <b>not</b> follow links extracted from HTML that contain <code>_escaped_fragment_</code>.
+<li><b>Sitemap:</b> Pretty URLs may be listed in Sitemaps.  For more information on Sitemaps, please see <a href="http://www.sitemaps.org">www.sitemaps.org</a>.
+</li></ol>
+
+
+<h2 id="backward-compatibility-to-current-practice">Backward compatibility to current practice</h2>
+
+<p>Current practices will still be supported.  Hijax remains a valid solution, as we describe <a href="https://developers.google.com/webmasters/ajax-crawling/docs/ http:/googlewebmastercentral.blogspot.com/2007/11/spiders-view-of-web-20">here</a>. Giving the crawler access to static content remains the main goal.
+
+<h2 id="existing-uses-of-">Existing uses of #!</h2>
+<p>A few web pages already use exclamation marks as the first character in a hash fragment.  Because hash fragments are not a part of the URL that are sent to a server, such URLs have never been crawled. In other words, such URLs are not currently in the search index.
+
+<p>Under the new scheme, they can be crawled. In other words, a crawler will map each <code>#!</code> URL to its corresponding <code>_escaped_fragment_</code> URL and request this URL from the web server. Because the site uses the pretty URL syntax (that is, <code>#!</code> hash fragments), the crawler will assume that the site has opted into the AJAX crawling scheme. This can cause problems, because the crawler will not get any meaningful content for these URLs if the web server does not return an HTML snapshot.
+
+<p>There are two options:</p>
+<ol>
+<li>The site adopts the AJAX crawling scheme and returns HTML snapshots.</li>
+<li>If this is not desired, it is possible to opt <i>out</i> out of the scheme by adding a directive to the <code>robots.txt</code> file:
+
+<p><code>Disallow: /*_escaped_fragment_</code>
+</p>
+</li></ol>
+
+
+
+  
+  </div>
+
+  
+        
+<div class="devsite-content-footer nocontent">
+  
+  
+  
+    <p>Except as otherwise noted, the content of this page is licensed under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>, and code samples are licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>. For details, see our <a href="https://developers.google.com/site-policies">Site Policies</a>.</p>
+  
+
+  
+    
+    <p class="devsite-content-footer-date" itemprop="datePublished" content="2015-10-14T23:26:35.871150">
+      
+      Last updated October 14, 2015.
+    </p>
+  
+
+</div>
+
+        </div>
+      </article>
+  
+
+        </div>
+      
+
+<footer class="devsite-footer nocontent"><nav class="devsite-full-site-width"><ul class="devsite-footer-row"><li class="devsite-footer-promo devsite-footer-flex"><a class="devsite-footer-promo-title gc-analytics-event" href="https://productforums.google.com/forum/#!forum/webmasters" data-label="Content Page Footer Promo" data-category="Site-Wide Custom Events"><img class="devsite-footer-promo-icon" src="https://ssl.gstatic.com/support/content/images/static/community_large_icon.png">
+            
+            
+              Forum 
+            
+          </a><div class="devsite-footer-promo-description">Find answers and connect with other webmasters</div></li><li class="devsite-footer-promo devsite-footer-flex"><a class="devsite-footer-promo-title gc-analytics-event" href="https://google.com/+GoogleWebmasters" data-label="Content Page Footer Promo" data-category="Site-Wide Custom Events"><img class="devsite-footer-promo-icon" src="https://developers.google.com/site-assets/google_plus_64dp.png">
+            
+            
+              Google+ 
+            
+          </a><div class="devsite-footer-promo-description">Announcements, tips, and resources</div></li><li class="devsite-footer-promo devsite-footer-flex"><a class="devsite-footer-promo-title gc-analytics-event" href="https://support.google.com/webmasters/go/blog" data-label="Content Page Footer Promo" data-category="Site-Wide Custom Events"><img class="devsite-footer-promo-icon" src="https://developers.google.com/site-assets/blogger_64dp.png">
+            
+            
+              Blog 
+            
+          </a><div class="devsite-footer-promo-description">Official source of webmaster news</div></li><li class="devsite-footer-promo devsite-footer-flex"><a class="devsite-footer-promo-title gc-analytics-event" href="https://www.youtube.com/channel/UCWf2ZlNsCGDS89VBF_awNvA" data-label="Content Page Footer Promo" data-category="Site-Wide Custom Events"><img class="devsite-footer-promo-icon" src="https://www.gstatic.com/images/icons/material/product/2x/youtube_64dp.png">
+            
+            
+              Videos 
+            
+          </a><div class="devsite-footer-promo-description">Watch videos and demos on YouTube</div></li></ul><ul class="devsite-footer-row"><li class="devsite-footer-linkbox devsite-footer-flex"><span class="devsite-footer-linkbox-icon material-icons">school</span><h3 class="devsite-footer-linkbox-heading hide-from-toc">Learn</h3><ul><li class="devsite-footer-linkbox-item"><a class="devsite-footer-linkbox-title gc-analytics-event" href="https://developers.google.com/structured-data/" data-label="Content Page Footer Linkbox" data-category="Site-Wide Custom Events">
+                
+                  Structured data 
+                
+              </a></li><li class="devsite-footer-linkbox-item"><a class="devsite-footer-linkbox-title gc-analytics-event" href="https://developers.google.com/webmasters/mobile-sites/" data-label="Content Page Footer Linkbox" data-category="Site-Wide Custom Events">
+                
+                  Mobile-friendly websites 
+                
+              </a></li></ul></li><li class="devsite-footer-linkbox devsite-footer-flex"><span class="devsite-footer-linkbox-icon material-icons">build</span><h3 class="devsite-footer-linkbox-heading hide-from-toc">Tools</h3><ul><li class="devsite-footer-linkbox-item"><a class="devsite-footer-linkbox-title gc-analytics-event" href="https://www.google.com/webmasters/tools/" data-label="Content Page Footer Linkbox" data-category="Site-Wide Custom Events">
+                
+                  Webmaster Tools 
+                
+              </a></li><li class="devsite-footer-linkbox-item"><a class="devsite-footer-linkbox-title gc-analytics-event" href="https://www.google.com/webmasters/docs/search-engine-optimization-starter-guide.pdf" data-label="Content Page Footer Linkbox" data-category="Site-Wide Custom Events">
+                
+                  SEO Starter Guide 
+                
+              </a></li></ul></li></ul></nav></footer><footer class="devsite-site-footer nocontent"><nav class="devsite-site-footer-nav devsite-nav devsite-full-site-width"><ul class="devsite-site-footer-column-list"><li class="devsite-site-footer-column"><ul class="devsite-site-footer-list"><li class="devsite-site-footer-item"><h3>Connect</h3></li><li class="devsite-site-footer-item"><a class="gc-analytics-event" href="https://googledevelopers.blogspot.com/" data-label="Footer Blog Link" data-category="Site-Wide Custom Events">Blog</a></li><li class="devsite-site-footer-item"><a class="gc-analytics-event" href="https://www.facebook.com/pages/Google-Developers/967415219957038" data-label="Footer Facebook Link" data-category="Site-Wide Custom Events">Facebook</a></li><li class="devsite-site-footer-item"><a class="gc-analytics-event" href="https://plus.google.com/+GoogleDevelopers/posts" data-label="Footer G+ Link" data-category="Site-Wide Custom Events">Google+</a></li><li class="devsite-site-footer-item"><a class="gc-analytics-event" href="https://medium.com/google-developers" data-label="Footer Medium Link" data-category="Site-Wide Custom Events">Medium</a></li><li class="devsite-site-footer-item"><a class="gc-analytics-event" href="https://twitter.com/googledevs" data-label="Footer Twitter Link" data-category="Site-Wide Custom Events">Twitter</a></li><li class="devsite-site-footer-item"><a class="gc-analytics-event" href="https://www.youtube.com/user/GoogleDevelopers" data-label="Footer YouTube Link" data-category="Site-Wide Custom Events">YouTube</a></li></ul></li><li class="devsite-site-footer-column"><ul class="devsite-site-footer-list"><li class="devsite-site-footer-item"><h3>Programs</h3></li><li class="devsite-site-footer-item"><a class="gc-analytics-event" href="https://www.womentechmakers.com/" data-label="Footer Women Techmakers" data-category="Site-Wide Custom Events">Women Techmakers</a></li><li class="devsite-site-footer-item"><a class="gc-analytics-event" href="https://developers.google.com/agency/" data-label="Footer Agency" data-category="Site-Wide Custom Events">Agency Program</a></li><li class="devsite-site-footer-item"><a class="gc-analytics-event" href="https://developers.google.com/groups/" data-label="Footer Groups" data-category="Site-Wide Custom Events">Google Developer Groups</a></li><li class="devsite-site-footer-item"><a class="gc-analytics-event" href="https://developers.google.com/experts/" data-label="Footer Experts" data-category="Site-Wide Custom Events">Google Developer Experts</a></li><li class="devsite-site-footer-item"><a class="gc-analytics-event" href="https://developers.google.com/startups/" data-label="Footer Startups" data-category="Site-Wide Custom Events">Startup Launchpad</a></li></ul></li><li class="devsite-site-footer-column"><ul class="devsite-site-footer-list"><li class="devsite-site-footer-item"><h3>Developer Consoles</h3></li><li class="devsite-site-footer-item"><a class="gc-analytics-event" href="https://console.developers.google.com/" data-label="Footer Google Developers Console" data-category="Site-Wide Custom Events">Google Developers Console</a></li><li class="devsite-site-footer-item"><a class="gc-analytics-event" href="https://play.google.com/apps/publish/" data-label="Footer Play Developers Console" data-category="Site-Wide Custom Events">Google Play Console</a></li><li class="devsite-site-footer-item"><a class="gc-analytics-event" href="https://cast.google.com/publish/" data-label="Footer Cast SDK Developer Console" data-category="Site-Wide Custom Events">Cast SDK Console</a></li><li class="devsite-site-footer-item"><a class="gc-analytics-event" href="https://chrome.google.com/webstore/developer/dashboard" data-label="Footer Chrome Web Store Developer Dashboard" data-category="Site-Wide Custom Events">Chrome Web Store Dashboard</a></li></ul></li><li class="devsite-site-footer-column"><ul class="devsite-site-footer-list"><li class="devsite-site-footer-item"><h3>Explore</h3></li><li class="devsite-site-footer-item"><a class="gc-analytics-event" href="https://developers.google.com/android/" data-label="Footer Android" data-category="Site-Wide Custom Events">Android</a></li><li class="devsite-site-footer-item"><a class="gc-analytics-event" href="https://developers.google.com/ios/" data-label="Footer iOS" data-category="Site-Wide Custom Events">iOS</a></li><li class="devsite-site-footer-item"><a class="gc-analytics-event" href="https://developers.google.com/web/" data-label="Footer Web" data-category="Site-Wide Custom Events">Web</a></li><li class="devsite-site-footer-item"><a class="gc-analytics-event" href="https://developers.google.com/games/" data-label="Footer Games" data-category="Site-Wide Custom Events">Games</a></li><li class="devsite-site-footer-item"><a class="gc-analytics-event" href="https://developers.google.com/products/" data-label="Footer Products" data-category="Site-Wide Custom Events">All Products</a></li><li class="devsite-site-footer-item"><a class="gc-analytics-event" href="https://www.google.com/about/careers/" data-label="Footer more careers" data-category="Site-Wide Custom Events">Careers</a></li></ul></li></ul></nav></footer><footer class="devsite-utility-footer"><nav class="devsite-utility-footer-nav devsite-nav devsite-full-site-width"><span class="devsite-utility-footer-links"><a href="https://developers.google.com/site-terms/">Terms</a>
+      &nbsp; | &nbsp;
+      
+      <a class="gc-analytics-event" href="https://www.google.com/intl/en/privacy/" data-label="Footer Privacy Link" data-category="Site-Wide Custom Events">Privacy</a></span><form class="devsite-utility-footer-language" id="setlang" action="/i18n/setlang/" method="post"><input name="xsrf_token" type="hidden" value="LYM33GZ44usY1SbJi5zSbSsqrDy1j6I4zdZ66Xwly186MTQ1NjE3OTYzOTcyMzYyMA"><input name="next" type="hidden" value="/webmasters/ajax-crawling/docs/specification"><select name="language" id="footer_language" style="display: none;"><option value="ar">
+            العربيّة
+          </option><option value="bg">
+            български
+          </option><option value="ca">
+            català
+          </option><option value="zh-cn">
+            简体中文
+          </option><option value="zh-tw">
+            繁體中文
+          </option><option value="hr">
+            Hrvatski
+          </option><option value="cs">
+            česky
+          </option><option value="da">
+            dansk
+          </option><option value="nl">
+            Nederlands
+          </option><option selected="selected" value="en">
+            English
+          </option><option value="fa">
+            فارسی
+          </option><option value="fi">
+            suomi
+          </option><option value="fr">
+            français
+          </option><option value="de">
+            Deutsch
+          </option><option value="el">
+            Ελληνικά
+          </option><option value="he">
+            עברית
+          </option><option value="hi">
+            Hindi
+          </option><option value="hu">
+            Magyar
+          </option><option value="id">
+            Bahasa Indonesia
+          </option><option value="it">
+            italiano
+          </option><option value="ja">
+            日本語
+          </option><option value="ko">
+            한국어
+          </option><option value="lv">
+            latviešu
+          </option><option value="lt">
+            Lietuviškai
+          </option><option value="nb">
+            norsk (bokmål)
+          </option><option value="nn">
+            norsk (nynorsk)
+          </option><option value="pl">
+            polski
+          </option><option value="pt-br">
+            Português Brasileiro
+          </option><option value="pt">
+            Português
+          </option><option value="ro">
+            Română
+          </option><option value="ru">
+            Русский
+          </option><option value="sr">
+            српски
+          </option><option value="sk">
+            slovenský
+          </option><option value="sl">
+            Slovenščina
+          </option><option value="es">
+            español
+          </option><option value="es-419">
+            Español (América Latina)
+          </option><option value="sv">
+            svenska
+          </option><option value="th">
+            ภาษาไทย
+          </option><option value="tr">
+            Türkçe
+          </option><option value="uk">
+            Українська
+          </option><option value="vi">
+            Tiếng Việt
+          </option></select><span class="kd-button kd-menubutton kd-select"><div style="display: inline-block;"><div class="label" style="float: left;">
+            English
+          </div><div class="kd-disclosureindicator"></div></div></span></form></nav></footer></div><script src="//www.gstatic.com/feedback/api.js" defer="" async=""></script><script src="https://developers.google.com/_static/7dd4f752d7/js/jquery_ui-bundle.js"></script><script src="https://developers.google.com/_static2/7dd4f752d7/jsi18n/"></script><script src="https://developers.google.com/_static/7dd4f752d7/js/script_foot_closure.js"></script><script src="https://developers.google.com/_static/7dd4f752d7/js/script_foot.js"></script><script>
+        (function($) {
+          devsite.devsite.Init($, 'devsite',
+              '[]', '',
+              'en', true,
+              '7dd4f752d7', '',
+              true,
+              {"098dafe57affddc137df300142652cfd": false, "6749dcb526ce9bde6993550c7d928d24": true, "ce556e0d44070ac33ad04f8fda535631": false, "00fe5bd02d47cd27e60084834f8b87c5": false, "993b1906435224595bd618f6f331ee45": true}, '/webmasters/ajax-crawling',
+              'https://developers.google.com/');
+        })(jQuery);
+
+        
+        devsite.localInit = function() {
+          
+        };
+      </script><script>
+      $('#setlang select').each(function() {
+        if (navigator.userAgent.match(/msie/i)) {
+          $(this).change(function() {
+            $('#setlang').submit();
+          });
+        } else {
+          $(this).kdSelect({'change': function() {
+            $('#setlang').submit();
+          }});
+        }
+      });
+      </script></div><ul class="kd-menulist" style="padding: 0px; left: auto; top: 7416.83px; height: 512px; right: 0px; bottom: auto; display: none; position: absolute;"><li class="kd-menulistitem">
+            العربيّة
+          </li><li class="kd-menulistitem">
+            български
+          </li><li class="kd-menulistitem">
+            català
+          </li><li class="kd-menulistitem">
+            简体中文
+          </li><li class="kd-menulistitem">
+            繁體中文
+          </li><li class="kd-menulistitem">
+            Hrvatski
+          </li><li class="kd-menulistitem">
+            česky
+          </li><li class="kd-menulistitem">
+            dansk
+          </li><li class="kd-menulistitem">
+            Nederlands
+          </li><li class="kd-menulistitem selected">
+            English
+          </li><li class="kd-menulistitem">
+            فارسی
+          </li><li class="kd-menulistitem">
+            suomi
+          </li><li class="kd-menulistitem">
+            français
+          </li><li class="kd-menulistitem">
+            Deutsch
+          </li><li class="kd-menulistitem">
+            Ελληνικά
+          </li><li class="kd-menulistitem">
+            עברית
+          </li><li class="kd-menulistitem">
+            Hindi
+          </li><li class="kd-menulistitem">
+            Magyar
+          </li><li class="kd-menulistitem">
+            Bahasa Indonesia
+          </li><li class="kd-menulistitem">
+            italiano
+          </li><li class="kd-menulistitem">
+            日本語
+          </li><li class="kd-menulistitem">
+            한국어
+          </li><li class="kd-menulistitem">
+            latviešu
+          </li><li class="kd-menulistitem">
+            Lietuviškai
+          </li><li class="kd-menulistitem">
+            norsk (bokmål)
+          </li><li class="kd-menulistitem">
+            norsk (nynorsk)
+          </li><li class="kd-menulistitem">
+            polski
+          </li><li class="kd-menulistitem">
+            Português Brasileiro
+          </li><li class="kd-menulistitem">
+            Português
+          </li><li class="kd-menulistitem">
+            Română
+          </li><li class="kd-menulistitem">
+            Русский
+          </li><li class="kd-menulistitem">
+            српски
+          </li><li class="kd-menulistitem">
+            slovenský
+          </li><li class="kd-menulistitem">
+            Slovenščina
+          </li><li class="kd-menulistitem">
+            español
+          </li><li class="kd-menulistitem">
+            Español (América Latina)
+          </li><li class="kd-menulistitem">
+            svenska
+          </li><li class="kd-menulistitem">
+            ภาษาไทย
+          </li><li class="kd-menulistitem">
+            Türkçe
+          </li><li class="kd-menulistitem">
+            Українська
+          </li><li class="kd-menulistitem">
+            Tiếng Việt
+          </li></ul><script>
+    var dataLayer = [{"scriptsafe": null, "projectName": "AJAX Crawling (Deprecated)", "language": {"requested": "en", "served": "en"}, "signedIn": "False", "internalUser": "False"}];
+    </script><span id="devsite-request-elapsed" data-request-elapsed="145.149946213"></span>
+</body></html>
