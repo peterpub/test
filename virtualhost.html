@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<!-- saved from url=(0098)https://nazimkuet.wordpress.com/2014/07/14/how-can-i-configure-tomcat-with-multiple-virtual-hosts/ -->
+<html lang="en"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>How can I configure Tomcat with multiple virtual hosts? | FoxTech Lab</title>
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="https://nazimkuet.wordpress.com/xmlrpc.php">
+<!--[if lt IE 9]>
+<script src="https://s0.wp.com/wp-content/themes/pub/chateau/js/html5.js" type="text/javascript"></script>
+<![endif]-->
+<link rel="alternate" type="application/rss+xml" title="FoxTech Lab » Feed" href="https://nazimkuet.wordpress.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="FoxTech Lab » Comments Feed" href="https://nazimkuet.wordpress.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="FoxTech Lab » How can I configure Tomcat with multiple virtual hosts? Comments Feed" href="https://nazimkuet.wordpress.com/2014/07/14/how-can-i-configure-tomcat-with-multiple-virtual-hosts/feed/">
+	<script type="text/javascript">
+		/* <![CDATA[ */
+		function addLoadEvent(func) {
+			var oldonload = window.onload;
+			if (typeof window.onload != 'function') {
+				window.onload = func;
+			} else {
+				window.onload = function () {
+					oldonload();
+					func();
+				}
+			}
+		}
+		/* ]]> */
+	</script>
+	<link rel="stylesheet" id="all-css-0" href="./virtualhost_files/saved_resource" type="text/css" media="all">
+<link rel="stylesheet" id="print-css-1" href="./virtualhost_files/global-print.css" type="text/css" media="print">
+<link rel="stylesheet" id="all-css-2" href="./virtualhost_files/saved_resource(1)" type="text/css" media="all">
+<script type="text/javascript">
+/* <![CDATA[ */
+var LoggedOutFollow = {"invalid_email":"Your subscription did not succeed, please try again with a valid email address."};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./virtualhost_files/saved_resource(2)"></script>
+<link rel="stylesheet" id="all-css-0" href="./virtualhost_files/style.css" type="text/css" media="all">
+<!--[if lt IE 8]>
+<link rel='stylesheet' id='highlander-comments-ie7-css'  href='https://s2.wp.com/wp-content/mu-plugins/highlander-comments/style-ie7.css?m=1351637563g&#038;ver=20110606' type='text/css' media='all' />
+<![endif]-->
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://nazimkuet.wordpress.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://s1.wp.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="How To Install Linux, Apache, MySQL, PHP (LAMP) stack on Debian" href="https://nazimkuet.wordpress.com/2014/07/14/how-to-install-linux-apache-mysql-php-lamp-stack-on-debian-2/">
+<link rel="next" title="Resetting a forgotten MySQL root password and MySql phpmyadmin troubleshooting" href="https://nazimkuet.wordpress.com/2014/07/15/resetting-a-forgotten-mysql-root-password-and-mysql-phpmyadmin-troubleshooting/">
+<meta name="generator" content="WordPress.com">
+<link rel="canonical" href="https://nazimkuet.wordpress.com/2014/07/14/how-can-i-configure-tomcat-with-multiple-virtual-hosts/">
+<link rel="shortlink" href="http://wp.me/p1STBz-a2">
+<link rel="alternate" type="application/json+oembed" href="https://public-api.wordpress.com/oembed/1.0/?format=json&amp;url=https%3A%2F%2Fnazimkuet.wordpress.com%2F2014%2F07%2F14%2Fhow-can-i-configure-tomcat-with-multiple-virtual-hosts%2F&amp;for=wpcom-auto-discovery"><link rel="alternate" type="application/xml+oembed" href="https://public-api.wordpress.com/oembed/1.0/?format=xml&amp;url=https%3A%2F%2Fnazimkuet.wordpress.com%2F2014%2F07%2F14%2Fhow-can-i-configure-tomcat-with-multiple-virtual-hosts%2F&amp;for=wpcom-auto-discovery">
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="How can I configure Tomcat with multiple virtual hosts?">
+<meta property="og:url" content="https://nazimkuet.wordpress.com/2014/07/14/how-can-i-configure-tomcat-with-multiple-virtual-hosts/">
+<meta property="og:description" content="Understanding Virtual Host Concept in Tomcat Hi in this post we will see how to setup virtual host in Apache Tomcat server. Virtual Host is in-built feature that allows to deploy multiple website(d…">
+<meta property="article:published_time" content="2014-07-14T08:51:24+00:00">
+<meta property="article:modified_time" content="2014-07-14T08:51:32+00:00">
+<meta property="og:site_name" content="FoxTech Lab">
+<meta property="og:image" content="https://nazimkuet.files.wordpress.com/2014/07/d696f-virtual_host_tomcat_request_processing.jpg?w=300">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:site" content="@wordpressdotcom">
+<meta name="twitter:image" content="https://nazimkuet.files.wordpress.com/2014/07/691ec-virtual_host_tomcat_outline.jpg?w=240">
+<meta name="twitter:card" content="summary">
+<meta property="fb:app_id" content="249643311490">
+<meta property="article:publisher" content="https://www.facebook.com/WordPresscom">
+<link rel="shortcut icon" type="image/x-icon" href="https://s2.wp.com/i/favicon.ico" sizes="16x16 24x24 32x32 48x48">
+<link rel="icon" type="image/x-icon" href="https://s2.wp.com/i/favicon.ico" sizes="16x16 24x24 32x32 48x48">
+<link rel="apple-touch-icon-precomposed" href="https://s0.wp.com/i/webclip.png">
+<link rel="openid.server" href="https://nazimkuet.wordpress.com/?openidserver=1">
+<link rel="openid.delegate" href="https://nazimkuet.wordpress.com/">
+<link rel="search" type="application/opensearchdescription+xml" href="https://nazimkuet.wordpress.com/osd.xml" title="FoxTech Lab">
+<link rel="search" type="application/opensearchdescription+xml" href="https://s1.wp.com/opensearch.xml" title="WordPress.com">
+		<style type="text/css">
+			.recentcomments a {
+				display: inline !important;
+				padding: 0 !important;
+				margin: 0 !important;
+			}
+
+			table.recentcommentsavatartop img.avatar, table.recentcommentsavatarend img.avatar {
+				border: 0px;
+				margin: 0;
+			}
+
+			table.recentcommentsavatartop a, table.recentcommentsavatarend a {
+				border: 0px !important;
+				background-color: transparent !important;
+			}
+
+			td.recentcommentsavatarend, td.recentcommentsavatartop {
+				padding: 0px 0px 1px 0px;
+				margin: 0px;
+			}
+
+			td.recentcommentstextend {
+				border: none !important;
+				padding: 0px 0px 2px 10px;
+			}
+
+			.rtl td.recentcommentstextend {
+				padding: 0px 10px 2px 0px;
+			}
+
+			td.recentcommentstexttop {
+				border: none;
+				padding: 0px 0px 0px 10px;
+			}
+
+			.rtl td.recentcommentstexttop {
+				padding: 0px 10px 0px 0px;
+			}
+		</style>
+		<meta name="application-name" content="FoxTech Lab"><meta name="msapplication-window" content="width=device-width;height=device-height"><meta name="msapplication-tooltip" content="Pull and Push Your Knowledge"><meta name="msapplication-task" content="name=Subscribe;action-uri=https://nazimkuet.wordpress.com/feed/;icon-uri=https://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=Sign up for a free blog;action-uri=http://wordpress.com/signup/;icon-uri=https://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Support;action-uri=http://support.wordpress.com/;icon-uri=https://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Forums;action-uri=http://forums.wordpress.com/;icon-uri=https://s2.wp.com/i/favicon.ico"><meta name="title" content="How can I configure Tomcat with multiple virtual hosts? | FoxTech Lab on WordPress.com">
+<meta name="description" content="Understanding Virtual Host Concept in Tomcat Hi in this post we will see how to setup virtual host in Apache Tomcat server. Virtual Host is in-built feature that allows to deploy multiple website(domains) in single instance of tomcat server. The main benefit in this way is its cost effective. Scenario: I am going to deploy 3…">
+		<script type="text/javascript" src="./virtualhost_files/"></script>
+		<script type="text/javascript">
+		try { amznads.getAds("3033"); } catch(e) { /* ignore */ }
+		</script>
+		<script type="text/javascript">
+		try {
+			var a9_p = amznads.getKeys(),
+			_ipw_custom = {
+				wordAds: '0',
+				adSafe: '0',
+				domain: 'nazimkuet.wordpress.com',
+				pageURL: 'https://nazimkuet.wordpress.com/2014/07/14/how-can-i-configure-tomcat-with-multiple-virtual-hosts/'
+			};
+			if("undefined"!=typeof a9_p&&""!=a9_p&&null!==a9_p&&"[object Array]"===Object.prototype.toString.call(a9_p)){var a="",b=0,c=a9_p.length;a9_p.sort();for(var d=0;d<c;d++){a9_p[d-b]=a9_p[d-b].replace(/a1x6p/,"a160x600p");var e=a9_p[d-b].split("p");e[0]==a&&(a9_p.splice(d-b,1),b++);a=e[0]}_ipw_custom.amznPay=a9_p};document.close();
+		} catch(e) {}
+		</script>		<!-- IPONWEB header script -->
+		<script type="text/javascript">
+			window.__ATA = {
+				scriptSrc: '//s.pubmine.com/showad.js',
+				slotPrefix: 'automattic-id-',
+				initAd: function(o) {
+					var o = o || {},
+						g = window,
+						d = g.document,
+						wr = d.write,
+						id = g.__ATA.id();
+					wr.call(d, '<div id="' + id + '" data-section="' + (o.sectionId || 0) + '"' + (o.type ? ('data-type="' + o.type + '"') : '') + ' ' + (o.forcedUrl ? ('data-forcedurl="' + o.forcedUrl + '"') : '') + ' style="width:' + (o.width || 0) + 'px; height:' + (o.height || 0) + 'px;">');
+					g.__ATA.displayAd(id);
+					wr.call(d, '</div>');
+				},
+				displayAd: function(id) {
+					window.__ATA.ids = window.__ATA.ids || {};
+					window.__ATA.ids[id] = 1;
+				},
+				customParams: _ipw_custom,
+				id: function() {
+					return window.__ATA.slotPrefix + (parseInt(Math.random() * 10000, 10) + 1 + (new Date()).getMilliseconds());
+				}
+			};
+			(function(d, ata) {
+				var pr = "https:" === d.location.protocol ? "https:" : "http:",
+					src = pr + ata.scriptSrc,
+					st = "text/javascript";
+				d.write('<scr' + 'ipt type="' + st + '" src="' + src + '"><\/scr' + 'ipt>');
+			})(window.document, window.__ATA);
+		</script><script type="text/javascript" src="./virtualhost_files/showad.js"></script>
+		<script type="text/javascript">
+		jQuery(window).ready(function () {
+			jQuery("a.wpa-about").text("About these ads");
+		});
+		</script><link rel="amphtml" href="https://nazimkuet.wordpress.com/2014/07/14/how-can-i-configure-tomcat-with-multiple-virtual-hosts/amp/"><style type="text/css" id="syntaxhighlighteranchor"></style>
+<script type="text/javascript">
+	window.google_analytics_uacct = "UA-52447-2";
+</script>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-52447-2']);
+	_gaq.push(['_setDomainName', 'wordpress.com']);
+	_gaq.push(['_initData']);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+	})();
+</script><script type="text/javascript" async="" src="./virtualhost_files/ga.js"></script>
+<link rel="stylesheet" type="text/css" id="gravatar-card-css" href="./virtualhost_files/hovercard.css"><link rel="stylesheet" type="text/css" id="gravatar-card-services-css" href="./virtualhost_files/services.css"></head>
+
+<body><div id="main" class="clear-fix">
+
+	<div id="primary">
+		<div id="content" class="clear-fix">
+
+		
+			<article id="post-622" class="post-622 post type-post status-publish format-standard hentry category-debian category-java-servlet category-linux category-tomcat7">
+	<header class="post-title">
+				<h1>How can I configure Tomcat with multiple virtual&nbsp;hosts?</h1>			<a href="https://nazimkuet.wordpress.com/2014/07/14/how-can-i-configure-tomcat-with-multiple-virtual-hosts/" class="post-permalink">		<p class="post-date">
+			<strong>14</strong>
+			<em>Monday</em>
+			<span>Jul 2014</span>
+		</p>
+	</a>
+	<div class="post-info clear-fix">
+		<p>
+			Posted <span class="by-author"> by <span class="author vcard"><a class="url fn n" href="https://nazimkuet.wordpress.com/author/sparkingnaz/" title="View all posts by nazimcsekuet" rel="author">nazimcsekuet</a></span></span> in <a href="https://nazimkuet.wordpress.com/category/debian/" rel="category tag">Debian</a>, <a href="https://nazimkuet.wordpress.com/category/java-servlet/" rel="category tag">Java Servlet</a>, <a href="https://nazimkuet.wordpress.com/category/linux/" rel="category tag">Linux</a>, <a href="https://nazimkuet.wordpress.com/category/tomcat7/" rel="category tag">tomcat7</a>		</p>
+		<p class="post-com-count">
+			<strong>≈ <a href="https://nazimkuet.wordpress.com/2014/07/14/how-can-i-configure-tomcat-with-multiple-virtual-hosts/#respond">Leave a comment</a></strong>
+		</p>
+	</div><!-- end .post-info -->
+	</header><!-- end .post-title -->
+
+	<div class="post-content clear-fix">
+			<div class="post-extras">
+					</div><!-- end .post-extras -->
+
+		<div class="post-entry">
+			<h3 class="post-title entry-title">Understanding Virtual Host Concept in Tomcat</h3>
+<div class="post-header"></div>
+<div id="aim14180145408253964903">
+<div dir="ltr" style="text-align:left;">Hi in this post we will see how to setup virtual host in Apache Tomcat server. Virtual Host is in-built feature that allows to deploy multiple website(domains) in single instance of tomcat server.&nbsp;The main benefit in this way is its cost effective.<p></p>
+<p><span style="color:#660000;font-size:large;"><b>Scenario:</b></span></p>
+<p>I am going to deploy 3 website with following domain names in single tomcat<br>
+<span style="color:magenta;"><br>
+</span><br>
+<span style="color:magenta;"><a href="http://www.ramki.com/" rel="nofollow">http://www.ramki.com</a></span><br>
+<span style="color:magenta;"><a href="http://www.krishnan.com/" rel="nofollow">http://www.krishnan.com</a></span><br>
+<span style="color:magenta;"><a href="http://www.blog.ramki.com/" rel="nofollow">http://www.blog.ramki.com</a></span></p>
+<p>The following diagram is my outline.</p>
+<table class="tr-caption-container" style="margin-left:auto;margin-right:auto;text-align:center;" cellspacing="0" cellpadding="0" align="center">
+<tbody>
+<tr>
+<td style="text-align:center;"><a style="margin-left:auto;margin-right:auto;" href="https://nazimkuet.files.wordpress.com/2014/07/691ec-virtual_host_tomcat_outline.jpg"><img src="./virtualhost_files/691ec-virtual_host_tomcat_outline.jpg" alt="" width="640" height="440" border="0"></a></td>
+</tr>
+<tr>
+<td class="tr-caption" style="text-align:center;">Outline structure of Virtual Host Concept in Tomcat</td>
+</tr>
+</tbody>
+</table>
+<p>Here my tomcat IP address 192.168.1.15. or any IP address allocated my ISP. but it should be public IP address.</p>
+<p><span style="color:#660000;font-size:large;"><b>How all domain names are&nbsp;pointing&nbsp;to my Tomcat?</b></span><br>
+When we purchase the domain name we need to update the our tomcat IP address to it.&nbsp;like</p>
+<div class="separator" style="clear:both;text-align:center;"><a style="margin-left:1em;margin-right:1em;" href="https://nazimkuet.files.wordpress.com/2014/07/6f6be-virtual_host_tomcat_dns_entries.jpg"><img src="./virtualhost_files/6f6be-virtual_host_tomcat_dns_entries.jpg" alt="" width="400" height="152" border="0"></a></div>
+<p>or we can simulate same DNS Setup through hosts file in both Linux and Windows.&nbsp;In Linux tha file is located at<b style="background-color:#fff2cc;"> /etc/hosts</b></p>
+<p><span style="color:#660000;font-size:large;"><b>Now How Setup&nbsp;Virtual Host Concept?</b></span></p>
+<p>Before going to setup the virtual host. first take look at the<b> server.xml </b>file in <span style="background-color:#fff2cc;">conf </span>folder in tomcat directory.</p>
+<p><b>server.xml</b></p>
+<div class="dp-highlighter">
+<div class="bar">
+<div class="tools"><a href="http://www.ramkitech.com/2012/02/understanding-virtual-host-concept-in.html#">view plain</a><a href="http://www.ramkitech.com/2012/02/understanding-virtual-host-concept-in.html#">print</a><a href="http://www.ramkitech.com/2012/02/understanding-virtual-host-concept-in.html#">?</a></div>
+</div>
+<ol class="dp-xml">
+<li class="alt"><span class="tag">&lt;</span><span class="tag-name">server</span>&nbsp;<span class="attribute">port</span>=<span class="attribute-value">“8005”</span>&nbsp;<span class="attribute">shutdown</span>=<span class="attribute-value">“SHUTDOWN”</span><span class="tag">&gt;</span></li>
+<li></li>
+<li class="alt">&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">service</span>&nbsp;<span class="attribute">name</span>=<span class="attribute-value">“Catalina”</span><span class="tag">&gt;</span></li>
+<li></li>
+<li class="alt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">engine</span>&nbsp;<span class="attribute">defaulthost</span>=<span class="attribute-value">“localhost”</span>&nbsp;<span class="attribute">name</span>=<span class="attribute-value">“Catalina”</span><span class="tag">&gt;</span></li>
+<li></li>
+<li class="alt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">host</span>&nbsp;<span class="attribute">appbase</span>=<span class="attribute-value">“webapps”</span>&nbsp;<span class="attribute">autodeploy</span>=<span class="attribute-value">“true”</span>&nbsp;<span class="attribute">name</span>=<span class="attribute-value">“localhost”</span>&nbsp;<span class="attribute">unpackwars</span>=<span class="attribute-value">“true”</span><span class="tag">&gt;</span></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/</span><span class="tag-name">host</span><span class="tag">&gt;</span></li>
+<li class="alt"></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/</span><span class="tag-name">engine</span><span class="tag">&gt;</span></li>
+<li class="alt">&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/</span><span class="tag-name">service</span><span class="tag">&gt;</span></li>
+<li><span class="tag">&lt;/</span><span class="tag-name">server</span><span class="tag">&gt;</span></li>
+</ol>
+</div>
+<p>here <span style="background-color:#fff2cc;">&lt;Engine&gt;</span> tag specified which engine is responsible for executing servlet. Here <span style="background-color:#d9ead3;"><b>Catalina </b></span>is the Engine.<br>
+<span style="background-color:#fff2cc;">&lt;Host&gt;</span> tag &nbsp;specify&nbsp;the domain name and web apps base&nbsp;location. here default domain name is localhost and web apps base&nbsp;location&nbsp;is webapps folder in tomcat directory.&nbsp;here&nbsp;<b><span style="color:#4c1130;">name&nbsp;</span></b>attribute to specify the domain name and&nbsp;<b><span style="color:#4c1130;">appbase&nbsp;</span></b>attribute to specify the location of domain&nbsp;specific&nbsp;web apps folder path.</p>
+<p>Now we need to add more &lt;Host&gt; tags to represent to our domains</p>
+<p><span style="background-color:#fff2cc;"><span style="color:#cc0000;">&lt;Host</span><span style="color:purple;"> name=</span><span style="color:blue;">“www.ramki.com”</span><span style="color:purple;">&nbsp;appbase=</span><span style="color:blue;">“ramki_webapps”</span><span style="color:#cc0000;">/&gt;</span></span><br>
+<span style="background-color:#fff2cc;"><span style="color:#cc0000;">&lt;Host</span><span style="color:purple;"> name=</span><span style="color:blue;">“www.krishnan.com”</span><span style="color:purple;">&nbsp;appbase=</span><span style="color:blue;">“krishnan_webapps”</span><span style="color:#cc0000;"> /&gt; </span></span><br>
+<span style="background-color:#fff2cc;"><span style="color:#cc0000;">&lt;Host</span><span style="color:purple;"> name=</span><span style="color:blue;">“www.blog.ramki.com”&nbsp;</span><span style="color:purple;">appbase=</span><span style="color:blue;">“blog_webapps”</span><span style="color:#cc0000;"> /&gt; </span></span><br>
+<span style="color:#cc0000;"><br>
+</span><br>
+Then we need to copy the webapps folder in tomcat and paste it anywhere and rename it to <span style="background-color:#fff2cc;">ramki_webapps, krishnan_webapps, blog_webapps</span> and update the path in &lt;Host&gt; tag
+</p></div>
+</div>
+<p>Modifies <b>server.xml</b> file</p>
+<div class="dp-highlighter">
+<div class="bar">
+<div class="tools"><a href="http://www.ramkitech.com/2012/02/understanding-virtual-host-concept-in.html#">view plain</a><a href="http://www.ramkitech.com/2012/02/understanding-virtual-host-concept-in.html#">print</a><a href="http://www.ramkitech.com/2012/02/understanding-virtual-host-concept-in.html#">?</a></div>
+</div>
+<ol class="dp-xml">
+<li class="alt"><span class="tag">&lt;</span><span class="tag-name">server</span>&nbsp;<span class="attribute">port</span>=<span class="attribute-value">“8005”</span>&nbsp;<span class="attribute">shutdown</span>=<span class="attribute-value">“SHUTDOWN”</span><span class="tag">&gt;</span></li>
+<li>&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">service</span>&nbsp;<span class="attribute">name</span>=<span class="attribute-value">“Catalina”</span><span class="tag">&gt;</span></li>
+<li class="alt"></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">engine</span>&nbsp;<span class="attribute">defaulthost</span>=<span class="attribute-value">“localhost”</span>&nbsp;<span class="attribute">name</span>=<span class="attribute-value">“Catalina”</span><span class="tag">&gt;</span></li>
+<li class="alt"></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">host</span>&nbsp;<span class="attribute">appbase</span>=<span class="attribute-value">“webapps”</span>&nbsp;<span class="attribute">autodeploy</span>=<span class="attribute-value">“true”</span>&nbsp;<span class="attribute">name</span>=<span class="attribute-value">“localhost”</span>&nbsp;<span class="attribute">unpackwars</span>=<span class="attribute-value">“true”</span><span class="tag">&gt;</span><span class="tag">&lt;/</span><span class="tag-name">host</span><span class="tag">&gt;</span></li>
+<li class="alt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">host</span>&nbsp;<span class="attribute">appbase</span>=<span class="attribute-value">“ramki_webapps”</span>&nbsp;<span class="attribute">autodeploy</span>=<span class="attribute-value">“true”</span>&nbsp;<span class="attribute">name</span>=<span class="attribute-value">“www.ramki.com”</span>&nbsp;<span class="attribute">unpackwars</span>=<span class="attribute-value">“true”</span><span class="tag">&gt;</span><span class="tag">&lt;/</span><span class="tag-name">host</span><span class="tag">&gt;</span></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">host</span>&nbsp;<span class="attribute">appbase</span>=<span class="attribute-value">“krishnan_webapps”</span>&nbsp;<span class="attribute">autodeploy</span>=<span class="attribute-value">“true”</span>&nbsp;<span class="attribute">name</span>=<span class="attribute-value">“www.krishnan.com”</span>&nbsp;<span class="attribute">unpackwars</span>=<span class="attribute-value">“true”</span><span class="tag">&gt;</span><span class="tag">&lt;/</span><span class="tag-name">host</span><span class="tag">&gt;</span></li>
+<li class="alt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">host</span>&nbsp;<span class="attribute">appbase</span>=<span class="attribute-value">“blog_webapps”</span>&nbsp;<span class="attribute">autodeploy</span>=<span class="attribute-value">“true”</span>&nbsp;<span class="attribute">name</span>=<span class="attribute-value">“www.blog.ramki.com”</span>&nbsp;<span class="attribute">unpackwars</span>=<span class="attribute-value">“true”</span><span class="tag">&gt;</span><span class="tag">&lt;/</span><span class="tag-name">host</span><span class="tag">&gt;</span></li>
+<li></li>
+<li class="alt"></li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/</span><span class="tag-name">engine</span><span class="tag">&gt;</span></li>
+<li class="alt">&nbsp;&nbsp;<span class="tag">&lt;/</span><span class="tag-name">service</span><span class="tag">&gt;</span></li>
+<li><span class="tag">&lt;/</span><span class="tag-name">server</span><span class="tag">&gt;</span></li>
+</ol>
+</div>
+<p><b><span style="color:#660000;">Simulate the DNS</span></b><br>
+Open the<b style="background-color:#fff2cc;"> /etc/hosts</b> file through root&nbsp;privilege and add following entry</p>
+<p><span style="color:#990000;">192.168.1.15 &nbsp; &nbsp; &nbsp; <a href="http://www.ramki.com/" rel="nofollow">http://www.ramki.com</a></span><br>
+<span style="color:#990000;">192.168.1.15 &nbsp; &nbsp; &nbsp; <a href="http://www.krishnan.com/" rel="nofollow">http://www.krishnan.com</a></span><br>
+<span style="color:#990000;">192.168.1.15 &nbsp; &nbsp; &nbsp; <a href="http://www.blog.ramki.com/" rel="nofollow">http://www.blog.ramki.com</a></span></p>
+<p>deploy the websites to&nbsp;respective&nbsp;web apps folder and start the tomcat.</p>
+<p><b><span style="color:#660000;font-size:large;">Test:</span></b><br>
+now open the browser and type<span style="background-color:#fff2cc;"> <a href="http://www.ramki.com/" rel="nofollow">http://www.ramki.com</a> </span>then its shows the ramk website content. Other two sites<span style="background-color:#fff2cc;"> <a href="http://www.krishnan.com/" rel="nofollow">http://www.krishnan.com</a></span> and <span style="background-color:#fff2cc;"><a href="http://www.blog.ramki.com/" rel="nofollow">http://www.blog.ramki.com</a> </span>works respective webapps.</p>
+<div class="separator" style="clear:both;text-align:center;"><a style="margin-left:1em;margin-right:1em;" href="https://nazimkuet.files.wordpress.com/2014/07/d696f-virtual_host_tomcat_request_processing.jpg"><img src="./virtualhost_files/d696f-virtual_host_tomcat_request_processing.jpg" alt="" width="640" height="360" border="0"></a></div>
+<p>In above diagram represent when we access<span style="background-color:#fff2cc;"> <a href="http://www.ramki.com/" rel="nofollow">http://www.ramki.com</a></span> the tomcat server consult with<span style="background-color:#fff2cc;"><b> server.xml</b></span> file and serves the files from<span style="background-color:#fff2cc;"> ramki_webapps</span> directory.</p>
+<p><b><span style="color:#660000;font-size:large;">How is Virtual Host Works</span></b><br>
+Here big question all websites are pointed to same tomcat. How tomcat can&nbsp;distinguished&nbsp;the request. (i.e) how tomcat knows browser requested ramki.com or <a href="http://www.krishnan.com/" rel="nofollow">http://www.krishnan.com</a></p>
+<p>The answer is based <span style="background-color:#fff2cc;"><b>Host </b></span>header field in HTTP request.<br>
+when we accssed <a href="http://www.ramki.com/" rel="nofollow">http://www.ramki.com</a> then browser make HTTP request. and the request look like this</p>
+<p><span style="-webkit-text-size-adjust:none;background-color:#fff2cc;font-family:Consolas, &#39;Lucida Console&#39;, monospace;font-size:12px;white-space:pre-wrap;"><b>GET / HTTP/1.1&nbsp;</b></span><br>
+<span style="-webkit-text-size-adjust:none;background-color:#fff2cc;font-family:Consolas, &#39;Lucida Console&#39;, monospace;font-size:12px;white-space:pre-wrap;"><b>Host: <a href="http://www.ramki.com%20/" rel="nofollow">http://www.ramki.com&nbsp;</a></b></span><br>
+<span style="-webkit-text-size-adjust:none;background-color:#fff2cc;font-family:Consolas, &#39;Lucida Console&#39;, monospace;font-size:12px;white-space:pre-wrap;"><b>Proxy-Connection: keep-alive&nbsp;</b></span><br>
+<span style="-webkit-text-size-adjust:none;background-color:#fff2cc;font-family:Consolas, &#39;Lucida Console&#39;, monospace;font-size:12px;white-space:pre-wrap;"><b>User-Agent: Mozilla/5.0 (Windows NT 6.2) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.56 Safari/535.11&nbsp;</b></span><br>
+<span style="-webkit-text-size-adjust:none;background-color:#fff2cc;font-family:Consolas, &#39;Lucida Console&#39;, monospace;font-size:12px;white-space:pre-wrap;"><b>Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&nbsp;</b></span><br>
+<span style="-webkit-text-size-adjust:none;background-color:#fff2cc;font-family:Consolas, &#39;Lucida Console&#39;, monospace;font-size:12px;white-space:pre-wrap;"><b>Accept-Encoding: gzip,deflate,sdch&nbsp;</b></span><br>
+<span style="-webkit-text-size-adjust:none;background-color:#fff2cc;font-family:Consolas, &#39;Lucida Console&#39;, monospace;font-size:12px;white-space:pre-wrap;"><b>Accept-Language: en-US,en;q=0.8</b></span><br>
+<span style="-webkit-text-size-adjust:none;background-color:#fff2cc;font-family:Consolas, &#39;Lucida Console&#39;, monospace;font-size:12px;white-space:pre-wrap;"><b><br>
+</b></span><br>
+<span style="font-family:Arial, Helvetica, sans-serif;"><span style="-webkit-text-size-adjust:none;white-space:pre-wrap;">h</span><span style="-webkit-text-size-adjust:none;white-space:pre-wrap;">ere Host Field contain domain name</span></span><br>
+<b style="-webkit-text-size-adjust:none;background-color:#fff2cc;font-family:Consolas, &#39;Lucida Console&#39;, monospace;font-size:12px;white-space:pre-wrap;">Host: <a href="http://www.ramki.com/" rel="nofollow">http://www.ramki.com</a></b></p>
+<p>when tomcat receive the request from any browser, it read the Host field and understand which domain we requested, then consult the server.xml file and delegate to appropriate Host process thread</p>
+<p>check my&nbsp;screen&nbsp;cast for setup</p>
+<h2>How to setup virtualhost in&nbsp;Tomcat</h2>
+<p>I recently had to configure a couple of different tomcat web applications as virtual hosts each one with its own domain. I was accessing these applications using the URL <a href="http://localhost:8080/app1" rel="nofollow">http://localhost:8080/app1</a> and <a href="http://localhost:8080/app2" rel="nofollow">http://localhost:8080/app2</a>. The basic intention behind the virtual host setup was to avoid the web application name from the url (app1/app2) and the applications to be accessed using <a href="http://www.domain1.com/" rel="nofollow">http://www.domain1.com</a> and <a href="http://www.domain2.com/" rel="nofollow">http://www.domain2.com/</a> . If there was only one web application I could have achieved it by keeping the web application inside webapps/ROOT folder.</p>
+<p>Though I am using Apache as front server which was used to forward the dynamic content request to tomcat, I am not describing the Apache-Tomcat configuration in this article. I have described the Apache-Virtualhost-Tomcat-configuration in another article.</p>
+<p><strong>Step 1: Configuring Tomcat <span class="skimlinks-unlinked">server.xml</span></strong></p>
+<p>Add the following entry in <span class="skimlinks-unlinked">server.xml</span> (TOMCAT_HOME/conf/<span class="skimlinks-unlinked">server.xml</span>). This should be added below to &lt;Host name=”localhost” ..&gt;…….&lt;/Host&gt;</p>
+<p><code>&lt;Host name="www.domain1.com" appBase="/opt/tomcat/www.domain1.com" unpackWARs="true" autoDeploy="true" xmlValidation="false" xmlNamespaceAware="false"/&gt;</code></p><code>
+</code><p><code>&lt;Host name="www.domain2.com" appBase="/opt/tomcat/www.domain2.com" unpackWARs="true" autoDeploy="true" xmlValidation="false" xmlNamespaceAware="false"/&gt;</code></p>
+<p><strong>Step 2: Deploying the applications</strong></p>
+<p>Create folders <a href="http://www.domain1.com/" rel="nofollow">http://www.domain1.com</a> and <a href="http://www.domain2.com/" rel="nofollow">http://www.domain2.com</a> inside TOMCAT_HOME. Copy the webapp1 to <a href="http://www.domain1.com/" rel="nofollow">http://www.domain1.com</a> and webapp2 to <a href="http://www.domain2.com/" rel="nofollow">http://www.domain2.com</a>. Rename both webapp1 and webapp2 to ROOT (ensure ROOT should be in uppercase).</p>
+<p>The following should exist after the completion of step2.</p>
+<p>TOMCAT_HOME/www.domain1.com/ROOT/webapp1_contents<br>
+TOMCAT_HOME/www.domain2.com/ROOT/webapp2_contents</p>
+<p><strong>Step 3: Enabling Tomcat Manager Console for the new hosts</strong></p>
+<p>The default tomcat manager console (<a href="http://localhost:8080/manager/html" rel="nofollow">http://localhost:8080/manager/html</a>) will not be available for the new hosts. Manager Console needs to be enabled for the application deployed under each virtual host. This can be done by following the below steps.</p>
+<p>Create folders <a href="http://www.domain1.com/" rel="nofollow">http://www.domain1.com</a> and <a href="http://www.domain2.com/" rel="nofollow">http://www.domain2.com</a> under TOMCAT_HOME/conf/Catalina/. Copy <span class="skimlinks-unlinked">manager.xml</span> from TOMCAT_HOME/conf/Catalina/localhost/ to TOMCAT_HOME/conf/Catalina/www.domain1.com/ and TOMCAT_HOME/conf/Catalina/www.domain1.com/.</p>
+<p>The tomcat manager console for the hosts <a href="http://www.domain1.com/" rel="nofollow">http://www.domain1.com</a> and <a href="http://www.domain2.com/" rel="nofollow">http://www.domain2.com</a> can be accessed using the URLs <a href="http://www.domain1.com:8080/manager/html" rel="nofollow">http://www.domain1.com:8080/manager/html</a> and <a href="http://www.domain2.com:8080/manager/html" rel="nofollow">http://www.domain2.com:8080/manager/html</a> respectively.</p>
+<p><strong>Step 4: Adding host entry for each virtualhost</strong></p>
+<p>In production/staging environments normally the domain would be mapped to the IP of the machine. However in development environments we need to map the IP with the virtualhost. This can be done by adding a host entry in the host file. The ‘hosts’ file is typically located at C:\WINDOWS\system32\drivers\etc\hosts on windows and /etc/hosts on UNIX</p>
+<p><code>Machine-IP <a href="http://www.domain1.com/" rel="nofollow">http://www.domain1.com</a><br>
+Machine-IP <a href="http://www.domain2.com/" rel="nofollow">http://www.domain2.com</a></code></p>
+<p><strong>Step 5: verifying the virtualhosts</strong></p>
+<p>Restart the Tomcat Server and check whether the webapp1 and webapp2 are accessible using the URLs <a href="http://www.domain1.com:8080/" rel="nofollow">http://www.domain1.com:8080</a> and <a href="http://www.domain2.com:8080/" rel="nofollow">http://www.domain2.com:8080</a> respectively.</p>
+<p>If you are using Apache web server and Tomcat, you can leave Tomcat running on port 8080. Otherwise simply change the port of tomcat from 8080 to 80.</p>
+<div id="stcpDiv" style="position:absolute;top:-1999px;left:-1988px;">
+<p>With Tomcat running on JVM Host dedicated JVM you have full control over configuration files. You may host multiple domains and map them to particular web applications. First step is to map a domain or a directory under it to the Tomcat (this is done with mod_jk or mod_proxy_ajp using our JVMCP control panel), second step is to add virtual host in server.xml. See the below example.</p>
+<p>You have 2 domains: primary domain domain1.com and addon domain domain2.com. Your ~/appservers/apache-tomcat/webapps directory:</p>
+<pre>$ls -al
+docs
+domain1
+domain2
+examples
+manager
+host-manager
+ROOT</pre>
+<p>Please put JSP files into domain1 and domain2 directories. Alternatively you can put domain1.war and domain2.war in webapps directory and Tomcat will deploy the wars.</p>
+<ol>
+<li>Domain1.com is the main domain (the main domain can point to different directory such as ROOT, anyway this is only example).</li>
+<li>Domain2.com is the domain that we want to add to Tomcat.</li>
+<li>You need create domain2.com as addon domain in cPanel.</li>
+<li>Please make sure you use correct nameservers for domain2.com.</li>
+<li>Create mappings – default mappings are enough. Use custom JVM control panel <a title="JVM control panel JCP" href="https://uc1.nodecluster.net/jcp/">JVMCP</a> for this.</li>
+<li>Configure $CATALINA_HOME/conf/server.xml file.</li>
+</ol>
+<p>Please edit $CATALINA_HOME/conf/server.xml</p>
+<pre> &lt;Host name="domain1.com" autoDeploy="true" appBase="webapps" unpackWARs="true"&gt;
+ &lt;Alias&gt;www.domain1.com&lt;/Alias&gt;
+ &lt;Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"   
+                prefix="localhost_access_log." suffix=".txt" 
+                pattern="%h %l %u %t "%r" %s %b" resolveHosts="false"/&gt;
+ &lt;Context path="" docBase="domain1" debug="0" reloadable="true"/&gt; 
+ &lt;/Host&gt;
+
+ &lt;Host name="domain2.com" autoDeploy="true" appBase="webapps" unpackWARs="true"&gt;
+ &lt;Alias&gt;www.domain2.com&lt;/Alias&gt;
+ &lt;Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"   
+                prefix="localhost_access_log." suffix=".txt" 
+                pattern="%h %l %u %t "%r" %s %b" resolveHosts="false"/&gt;
+ &lt;Context path="" docBase="domain2" debug="0" reloadable="true"/&gt; 
+ &lt;/Host&gt;</pre>
+<p>Restart Tomcat using JVMCP or shell and your are done.</p>
+<p>– See more at: <a href="http://www.jvmhost.com/articles/how-to-configure-tomcat-with-multiple-virtual-hosts#sthash.Yw1C4fx0.dpuf" rel="nofollow">http://www.jvmhost.com/articles/how-to-configure-tomcat-with-multiple-virtual-hosts#sthash.Yw1C4fx0.dpuf</a></p></div>
+<div id="stcpDiv" style="position:absolute;top:-1999px;left:-1988px;">
+<p>With Tomcat running on JVM Host dedicated JVM you have full control over configuration files. You may host multiple domains and map them to particular web applications. First step is to map a domain or a directory under it to the Tomcat (this is done with mod_jk or mod_proxy_ajp using our JVMCP control panel), second step is to add virtual host in server.xml. See the below example.</p>
+<p>You have 2 domains: primary domain domain1.com and addon domain domain2.com. Your ~/appservers/apache-tomcat/webapps directory:</p>
+<pre>$ls -al
+docs
+domain1
+domain2
+examples
+manager
+host-manager
+ROOT</pre>
+<p>Please put JSP files into domain1 and domain2 directories. Alternatively you can put domain1.war and domain2.war in webapps directory and Tomcat will deploy the wars.</p>
+<ol>
+<li>Domain1.com is the main domain (the main domain can point to different directory such as ROOT, anyway this is only example).</li>
+<li>Domain2.com is the domain that we want to add to Tomcat.</li>
+<li>You need create domain2.com as addon domain in cPanel.</li>
+<li>Please make sure you use correct nameservers for domain2.com.</li>
+<li>Create mappings – default mappings are enough. Use custom JVM control panel <a title="JVM control panel JCP" href="https://uc1.nodecluster.net/jcp/">JVMCP</a> for this.</li>
+<li>Configure $CATALINA_HOME/conf/server.xml file.</li>
+</ol>
+<p>Please edit $CATALINA_HOME/conf/server.xml</p>
+<pre> &lt;Host name="domain1.com" autoDeploy="true" appBase="webapps" unpackWARs="true"&gt;
+ &lt;Alias&gt;www.domain1.com&lt;/Alias&gt;
+ &lt;Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"   
+                prefix="localhost_access_log." suffix=".txt" 
+                pattern="%h %l %u %t "%r" %s %b" resolveHosts="false"/&gt;
+ &lt;Context path="" docBase="domain1" debug="0" reloadable="true"/&gt; 
+ &lt;/Host&gt;
+
+ &lt;Host name="domain2.com" autoDeploy="true" appBase="webapps" unpackWARs="true"&gt;
+ &lt;Alias&gt;www.domain2.com&lt;/Alias&gt;
+ &lt;Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"   
+                prefix="localhost_access_log." suffix=".txt" 
+                pattern="%h %l %u %t "%r" %s %b" resolveHosts="false"/&gt;
+ &lt;Context path="" docBase="domain2" debug="0" reloadable="true"/&gt; 
+ &lt;/Host&gt;</pre>
+<p>Restart Tomcat using JVMCP or shell and your are done.</p>
+<p>– See more at: <a href="http://www.jvmhost.com/articles/how-to-configure-tomcat-with-multiple-virtual-hosts#sthash.Yw1C4fx0.dpuf" rel="nofollow">http://www.jvmhost.com/articles/how-to-configure-tomcat-with-multiple-virtual-hosts#sthash.Yw1C4fx0.dpuf</a></p></div>
+<p><a href="http://www.jvmhost.com/articles/how-to-configure-tomcat-with-multiple-virtual-hosts" rel="nofollow">http://www.jvmhost.com/articles/how-to-configure-tomcat-with-multiple-virtual-hosts</a></p>
+<header class="entry-header">
+<h1 class="entry-title">How to create virtual host for app on Tomcat.</h1>
+</header>
+<div class="entry-content">
+<p><strong>NB!</strong> I will say right away, that my <em>Tomcat</em> is running on <em>Ubuntu Server 10.10</em> under <em>VMWare Workstation 7</em>.<br>
+So here it goes. Recently I installed <a href="http://www.jetbrains.com/youtrack/" target="_blank" rel="nofollow">YouTrack</a> issue tracker on my local server, that runs on Tomcat. Very soon I got tired from typing every time (ip_address/webapp_name:port). So I looked up how to create a very simple VirtualHost for Tomcat.<br>
+<span id="more-250"></span><br>
+To create <em>Tomcat VirtualHost</em> you just need to edit <strong>tomcat_dir/conf/server.xml</strong> and inside Engine tag place following code:</p>
+<div>
+<div id="highlighter_220397" class="syntaxhighlighter  xml">
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td class="gutter">
+<div class="line number1 index0 alt2">1</div>
+<div class="line number2 index1 alt1">2</div>
+<div class="line number3 index2 alt2">3</div>
+<div class="line number4 index3 alt1">4</div>
+<div class="line number5 index4 alt2">5</div>
+</td>
+<td class="code">
+<div class="container">
+<div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">Host</code> <code class="xml color1">name</code><code class="xml plain">=</code><code class="xml string">"virtual_host_name"</code> <code class="xml color1">appBase</code><code class="xml plain">=</code><code class="xml string">"webapps/your_app_name"</code> <code class="xml color1">unpackWars</code><code class="xml plain">=</code><code class="xml string">"false"</code> <code class="xml color1">autoDeploy</code><code class="xml plain">=</code><code class="xml string">"false"</code><code class="xml plain">&gt;</code></div>
+<div class="line number2 index1 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">Logger</code> <code class="xml color1">className</code><code class="xml plain">=</code><code class="xml string">"org.apache.catalina.logger.FileLogger"</code> <code class="xml color1">directory</code><code class="xml plain">=</code><code class="xml string">"logs"</code> <code class="xml color1">prefix</code><code class="xml plain">=</code><code class="xml string">"virtual_log."</code> <code class="xml color1">suffix</code><code class="xml plain">=</code><code class="xml string">".txt"</code> <code class="xml color1">timestamp</code><code class="xml plain">=</code><code class="xml string">"true"</code> <code class="xml plain">/&gt;</code></div>
+<div class="line number3 index2 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">Context</code> <code class="xml color1">path</code><code class="xml plain">=</code><code class="xml string">""</code> <code class="xml color1">docBase</code><code class="xml plain">=</code><code class="xml string">"path_to_your_webapp_from_root"</code> <code class="xml color1">debug</code><code class="xml plain">=</code><code class="xml string">"0"</code> <code class="xml color1">reloadable</code><code class="xml plain">=</code><code class="xml string">"true"</code> <code class="xml plain">/&gt;</code></div>
+<div class="line number4 index3 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">Valve</code> <code class="xml color1">className</code><code class="xml plain">=</code><code class="xml string">"org.apache.catalina.valves.AccessLogValve"</code> <code class="xml color1">directory</code><code class="xml plain">=</code><code class="xml string">"logs"</code> <code class="xml color1">prefix</code><code class="xml plain">=</code><code class="xml string">"virtual_log."</code> <code class="xml color1">suffix</code><code class="xml plain">=</code><code class="xml string">".txt"</code> <code class="xml color1">pattern</code><code class="xml plain">=</code><code class="xml string">"common"</code> <code class="xml plain">/&gt;</code></div>
+<div class="line number5 index4 alt2"><code class="xml plain">&lt;/</code><code class="xml keyword">Host</code><code class="xml plain">&gt;</code></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>So in the end you will have to add this <strong>virtual_host_name</strong> to your windows hosts file and link to your VM ip address. Then you will be abble to access your like: <strong><em>virtual_host_name:8080</em></strong>.</p>
+</div>
+<div id="stcpDiv" style="position:absolute;top:-1999px;left:-1988px;">
+<p>With Tomcat running on JVM Host dedicated JVM you have full control over configuration files. You may host multiple domains and map them to particular web applications. First step is to map a domain or a directory under it to the Tomcat (this is done with mod_jk or mod_proxy_ajp using our JVMCP control panel), second step is to add virtual host in server.xml. See the below example.</p>
+<p>You have 2 domains: primary domain domain1.com and addon domain domain2.com. Your ~/appservers/apache-tomcat/webapps directory:</p>
+<pre>$ls -al
+docs
+domain1
+domain2
+examples
+manager
+host-manager
+ROOT</pre>
+<p>Please put JSP files into domain1 and domain2 directories. Alternatively you can put domain1.war and domain2.war in webapps directory and Tomcat will deploy the wars.</p>
+<ol>
+<li>Domain1.com is the main domain (the main domain can point to different directory such as ROOT, anyway this is only example).</li>
+<li>Domain2.com is the domain that we want to add to Tomcat.</li>
+<li>You need create domain2.com as addon domain in cPanel.</li>
+<li>Please make sure you use correct nameservers for domain2.com.</li>
+<li>Create mappings – default mappings are enough. Use custom JVM control panel <a title="JVM control panel JCP" href="https://uc1.nodecluster.net/jcp/">JVMCP</a> for this.</li>
+<li>Configure $CATALINA_HOME/conf/server.xml file.</li>
+</ol>
+<p>Please edit $CATALINA_HOME/conf/server.xml</p>
+<pre> &lt;Host name="domain1.com" autoDeploy="true" appBase="webapps" unpackWARs="true"&gt;
+ &lt;Alias&gt;www.domain1.com&lt;/Alias&gt;
+ &lt;Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"   
+                prefix="localhost_access_log." suffix=".txt" 
+                pattern="%h %l %u %t "%r" %s %b" resolveHosts="false"/&gt;
+ &lt;Context path="" docBase="domain1" debug="0" reloadable="true"/&gt; 
+ &lt;/Host&gt;
+
+ &lt;Host name="domain2.com" autoDeploy="true" appBase="webapps" unpackWARs="true"&gt;
+ &lt;Alias&gt;www.domain2.com&lt;/Alias&gt;
+ &lt;Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"   
+                prefix="localhost_access_log." suffix=".txt" 
+                pattern="%h %l %u %t "%r" %s %b" resolveHosts="false"/&gt;
+ &lt;Context path="" docBase="domain2" debug="0" reloadable="true"/&gt; 
+ &lt;/Host&gt;</pre>
+<p>Restart Tomcat using JVMCP or shell and your are done.</p>
+<p>– See more at: <a href="http://www.jvmhost.com/articles/how-to-configure-tomcat-with-multiple-virtual-hosts#sthash.Yw1C4fx0.dpuf" rel="nofollow">http://www.jvmhost.com/articles/how-to-configure-tomcat-with-multiple-virtual-hosts#sthash.Yw1C4fx0.dpuf</a></p></div>
+		<div class="wpcnt">
+			<div class="wpa wpmrec">
+				<a class="wpa-about" href="https://wordpress.com/about-these-ads/" rel="nofollow">About these ads</a>
+				<div class="u">
+					<script type="text/javascript">
+					(function(g){g.__ATA.initAd({sectionId:26942, width:300, height:250});})(window);
+					</script><div id="automattic-id-8110" data-section="26942" style="width:300px; height:250px;"><iframe width="300" height="250" style="border:none;width:300px;height:250px;" frameborder="0" scrolling="no" name="fif_slot_automattic-id-_automattic-id-8110" id="fif_slot_automattic-id-_automattic-id-8110" src="javascript:&quot;&lt;html&gt;&lt;body style=&#39;background:transparent;margin:0%;&#39;&gt;&lt;/body&gt;&lt;/html&gt;&quot;"></iframe></div>
+				</div>
+			</div>
+		</div><div id="jp-post-flair" class="sharedaddy sd-like-enabled sd-sharing-enabled"><div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing"><h3 class="sd-title">Share this:</h3><div class="sd-content"><ul><li class="share-twitter"><a rel="nofollow" data-shared="sharing-twitter-622" class="share-twitter sd-button share-icon" href="https://nazimkuet.wordpress.com/2014/07/14/how-can-i-configure-tomcat-with-multiple-virtual-hosts/?share=twitter&amp;nb=1" target="_blank" title="Click to share on Twitter"><span>Twitter</span></a></li><li class="share-facebook"><a rel="nofollow" data-shared="sharing-facebook-622" class="share-facebook sd-button share-icon" href="https://nazimkuet.wordpress.com/2014/07/14/how-can-i-configure-tomcat-with-multiple-virtual-hosts/?share=facebook&amp;nb=1" target="_blank" title="Share on Facebook"><span>Facebook</span></a></li><li class="share-end"></li></ul></div></div></div><div class="sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-loaded" id="like-post-wrapper-27859797-622-56e1a26ec90e0" data-src="//widgets.wp.com/likes/#blog_id=27859797&amp;post_id=622&amp;origin=nazimkuet.wordpress.com&amp;obj_id=27859797-622-56e1a26ec90e0" data-name="like-post-frame-27859797-622-56e1a26ec90e0"><h3 class="sd-title">Like this:</h3><div class="likes-widget-placeholder post-likes-widget-placeholder" style="height: 55px; display: none;"><span class="button"><span>Like</span></span> <span class="loading">Loading...</span></div><iframe class="post-likes-widget jetpack-likes-widget" name="like-post-frame-27859797-622-56e1a26ec90e0" height="55px" width="100%" frameborder="0" src="./virtualhost_files/saved_resource.html"></iframe><span class="sd-text-color"></span><a class="sd-link-color"></a></div>
+<div id="jp-relatedposts" class="jp-relatedposts" style="display: block;">
+	<h3 class="jp-relatedposts-headline"><em>Related</em></h3>
+<div class="jp-relatedposts-items jp-relatedposts-items-minimal"><p class="jp-relatedposts-post jp-relatedposts-post0" data-post-id="610" data-post-format="false"><span class="jp-relatedposts-post-title"><a class="jp-relatedposts-post-a" href="https://nazimkuet.wordpress.com/2014/07/14/how-to-install-and-configure-apache-tomcat-on-a-debian-server/" title="How To Install and Configure Apache Tomcat on a Debian Server
+
+1. nano /etc/apt/sources.list deb http://ftp.debian.org/debian/ squeeze  main deb http://ftp.de.debian.org/debian sid main 2. Details Apache Tomcat is an application server that can be used to serve Java applications to web users. It is an open implementation of the Java Servlet and JavaServer Pages specs that were developed by Sun Microsystems. If…" rel="nofollow" data-origin="622" data-position="0">How To Install and Configure Apache Tomcat on a Debian Server</a></span><span class="jp-relatedposts-post-context">In "Debian"</span></p><p class="jp-relatedposts-post jp-relatedposts-post1" data-post-id="602" data-post-format="false"><span class="jp-relatedposts-post-title"><a class="jp-relatedposts-post-a" href="https://nazimkuet.wordpress.com/2014/07/09/how-to-install-tomcat-7-0-54-server-on-centos-rhel-65/" title="How To Install Tomcat 7.0.54 Server on CentOS &amp;amp; RHEL 6/5
+
+Apache Tomcat is a opensource webserver product of Apache Foundation like Apache HTTP server. It is used to deploying Java Servlet and JSP applications. To deploy any application in Tomcat we can simply create a war file and deploy them. For more details about you can visit apache official site…" rel="nofollow" data-origin="622" data-position="1">How To Install Tomcat 7.0.54 Server on CentOS &amp; RHEL 6/5</a></span><span class="jp-relatedposts-post-context">In "Linux"</span></p><p class="jp-relatedposts-post jp-relatedposts-post2" data-post-id="614" data-post-format="false"><span class="jp-relatedposts-post-title"><a class="jp-relatedposts-post-a" href="https://nazimkuet.wordpress.com/2014/07/14/howto-install-tomcat-7-on-debian-lenny-squeeze-wheeze/" title="Howto Install Tomcat 7 on Debian (Lenny/ squeeze/ wheeze)
+
+This Article describes how to install Apache Tomcat 7 on a Debian (Lenny) OS in 8 easy steps. For this HowTo to work smoothly you must already have Java installed on your machine. In case you haven’t Java installed on your machine, there is anoter HowTo for this Task on my Blog.…" rel="nofollow" data-origin="622" data-position="2">Howto Install Tomcat 7 on Debian (Lenny/ squeeze/ wheeze)</a></span><span class="jp-relatedposts-post-context">In "Debian"</span></p></div></div></div>					</div><!-- end .post-entry -->
+	</div><!-- end .post-content -->
+
+	</article><!-- #post-622 -->
+
+			<nav id="nav-below" class="clear-fix">
+				<h1 class="assistive-text">Post navigation</h1>
+				<span class="nav-previous"><a href="https://nazimkuet.wordpress.com/2014/07/14/how-to-install-linux-apache-mysql-php-lamp-stack-on-debian-2/" rel="prev">← Previous post</a></span>
+				<span class="nav-next"><a href="https://nazimkuet.wordpress.com/2014/07/15/resetting-a-forgotten-mysql-root-password-and-mysql-phpmyadmin-troubleshooting/" rel="next">Next post →</a></span>
+			</nav><!-- #nav-below -->
+
+			<div id="comments">
+	
+	
+	
+					<div id="respond" class="comment-respond js">
+			<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="https://nazimkuet.wordpress.com/2014/07/14/how-can-i-configure-tomcat-with-multiple-virtual-hosts/#respond" style="display:none;">Cancel reply</a></small></h3>				<form action="https://nazimkuet.wordpress.com/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+					<input type="hidden" id="highlander_comment_nonce" name="highlander_comment_nonce" value="7c47387470"><input type="hidden" name="_wp_http_referer" value="/2014/07/14/how-can-i-configure-tomcat-with-multiple-virtual-hosts/">
+<input type="hidden" name="hc_post_as" id="hc_post_as" value="guest">
+
+<div class="comment-form-field comment-textarea">
+	
+	<div id="comment-form-comment"><textarea tabindex="-1" style="position: absolute; top: -999px; left: 0px; right: auto; bottom: auto; border: 0px; padding: 0px; box-sizing: content-box; word-wrap: break-word; overflow: hidden; transition: none; height: 0px !important; min-height: 0px !important; font-family: Arial, Helvetica, Tahoma, Verdana, sans-serif; font-size: 14px; font-weight: 400; font-style: normal; letter-spacing: 0px; text-transform: none; text-decoration: none; word-spacing: 0px; text-indent: 0px; line-height: normal; width: 536.75px;" class="autosizejs "></textarea><textarea id="comment" name="comment" title="Enter your comment here..." placeholder="Enter your comment here..." style="height: 36px; overflow: hidden; word-wrap: break-word; resize: none;"></textarea></div>
+</div>
+
+<div id="comment-form-identity" style="display: none;">
+
+	<div id="comment-form-nascar">
+		<p>Fill in your details below or click an icon to log in:</p>
+		<ul>
+			<li class="selected" style="display:none;">
+				<a href="https://nazimkuet.wordpress.com/2014/07/14/how-can-i-configure-tomcat-with-multiple-virtual-hosts/#comment-form-guest" id="postas-guest" title="Guest">
+					<span></span>
+				</a>
+			</li>
+			<li>
+				<a href="https://nazimkuet.wordpress.com/2014/07/14/how-can-i-configure-tomcat-with-multiple-virtual-hosts/#comment-form-load-service:WordPress.com" id="postas-wordpress" title="WordPress.com">
+					<span></span>
+				</a>
+			</li>
+			<li>
+				<a href="https://nazimkuet.wordpress.com/2014/07/14/how-can-i-configure-tomcat-with-multiple-virtual-hosts/#comment-form-load-service:Twitter" id="postas-twitter" title="Twitter">
+					<span></span>
+				</a>
+			</li>
+			<li>
+				<a href="https://nazimkuet.wordpress.com/2014/07/14/how-can-i-configure-tomcat-with-multiple-virtual-hosts/#comment-form-load-service:Facebook" id="postas-facebook" title="Facebook">
+					<span></span>
+				</a>
+			</li>
+			<li>
+			<iframe id="googleplus-sign-in" name="googleplus-sign-in" src="./virtualhost_files/saved_resource(3).html" width="24" height="24" scrolling="no" allowtransparency="true" seamless="seamless" frameborder="0"></iframe>
+			</li>
+		</ul>
+	</div>
+
+	<div id="comment-form-guest" class="comment-form-service selected">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+<a href="https://gravatar.com/site/signup/" target="_blank">				<img src="./virtualhost_files/ad516503a11cd5ca435acc9bb6523536" alt="Gravatar" width="25" class="no-grav">
+</a>			</div>
+
+				<div class="comment-form-fields">
+				<div class="comment-form-field comment-form-email">
+					<label for="email">Email <span class="required">(required)</span> <span class="nopublish">(Address never made public)</span></label>
+					<div class="comment-form-input"><input id="email" name="email" type="email" value=""></div>
+				</div>
+				<div class="comment-form-field comment-form-author">
+					<label for="author">Name <span class="required">(required)</span></label>
+					<div class="comment-form-input"><input id="author" name="author" type="text" value=""></div>
+				</div>
+				<div class="comment-form-field comment-form-url">
+					<label for="url">Website</label>
+					<div class="comment-form-input"><input id="url" name="url" type="text" value=""></div>
+				</div>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-wordpress" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="./virtualhost_files/ad516503a11cd5ca435acc9bb6523536" alt="WordPress.com Logo" width="25" class="no-grav">
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="wp_avatar" id="wordpress-avatar" class="comment-meta-wordpress" value="">
+				<input type="hidden" name="wp_user_id" id="wordpress-user_id" class="comment-meta-wordpress" value="">
+				<input type="hidden" name="wp_access_token" id="wordpress-access_token" class="comment-meta-wordpress" value="">
+				<p class="comment-form-posting-as pa-wordpress"><strong></strong> You are commenting using your WordPress.com account. <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( &#39;wordpress&#39; );">Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="https://nazimkuet.wordpress.com/2014/07/14/how-can-i-configure-tomcat-with-multiple-virtual-hosts/#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-twitter" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="./virtualhost_files/ad516503a11cd5ca435acc9bb6523536" alt="Twitter picture" width="25" class="no-grav">
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="twitter_avatar" id="twitter-avatar" class="comment-meta-twitter" value="">
+				<input type="hidden" name="twitter_user_id" id="twitter-user_id" class="comment-meta-twitter" value="">
+				<input type="hidden" name="twitter_access_token" id="twitter-access_token" class="comment-meta-twitter" value="">
+				<p class="comment-form-posting-as pa-twitter"><strong></strong> You are commenting using your Twitter account. <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( &#39;twitter&#39; );">Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="https://nazimkuet.wordpress.com/2014/07/14/how-can-i-configure-tomcat-with-multiple-virtual-hosts/#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-facebook" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="./virtualhost_files/ad516503a11cd5ca435acc9bb6523536" alt="Facebook photo" width="25" class="no-grav">
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="fb_avatar" id="facebook-avatar" class="comment-meta-facebook" value="">
+				<input type="hidden" name="fb_user_id" id="facebook-user_id" class="comment-meta-facebook" value="">
+				<input type="hidden" name="fb_access_token" id="facebook-access_token" class="comment-meta-facebook" value="">
+				<p class="comment-form-posting-as pa-facebook"><strong></strong> You are commenting using your Facebook account. <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( &#39;facebook&#39; );">Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="https://nazimkuet.wordpress.com/2014/07/14/how-can-i-configure-tomcat-with-multiple-virtual-hosts/#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-googleplus" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="./virtualhost_files/ad516503a11cd5ca435acc9bb6523536" alt="Google+ photo" width="25" class="no-grav">
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="googleplus_avatar" id="googleplus-avatar" class="comment-meta-googleplus" value="">
+				<input type="hidden" name="googleplus_user_id" id="googleplus-user_id" class="comment-meta-googleplus" value="">
+				<input type="hidden" name="googleplus_access_token" id="googleplus-access_token" class="comment-meta-googleplus" value="">
+				<p class="comment-form-posting-as pa-googleplus"><strong></strong> You are commenting using your Google+ account. <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( &#39;googleplus&#39; );">Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="https://nazimkuet.wordpress.com/2014/07/14/how-can-i-configure-tomcat-with-multiple-virtual-hosts/#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+
+	<div id="comment-form-load-service" class="comment-form-service">
+		<div class="comment-form-posting-as-cancel"><a href="javascript:HighlanderComments.cancelExternalWindow();">Cancel</a></div>
+		<p>Connecting to %s</p>
+	</div>
+
+</div>
+
+<script type="text/javascript">
+var highlander_expando_javascript = function(){
+	var input = document.createElement( 'input' ),
+	    comment = jQuery( '#comment' );
+
+	if ( 'placeholder' in input ) {
+		comment.attr( 'placeholder', jQuery( '.comment-textarea label' ).remove().text() );
+	}
+
+	// Expando Mode: start small, then auto-resize on first click + text length
+	jQuery( '#comment-form-identity' ).hide();
+	jQuery( '#comment-form-subscribe' ).hide();
+	jQuery( '#commentform .form-submit' ).hide();
+
+	comment.css( { 'height':'10px' } ).one( 'focus', function() {
+		var timer = setInterval( HighlanderComments.resizeCallback, 10 )
+		jQuery( this ).animate( { 'height': HighlanderComments.initialHeight } ).delay( 100 ).queue( function(n) { clearInterval( timer ); HighlanderComments.resizeCallback(); n(); } );
+		jQuery( '#comment-form-identity' ).slideDown();
+		jQuery( '#comment-form-subscribe' ).slideDown();
+		jQuery( '#commentform .form-submit' ).slideDown();
+	});
+}
+jQuery(document).ready( highlander_expando_javascript );
+</script>
+
+<div id="comment-form-subscribe" style="display: none;">
+	<p class="comment-subscription-form"><input type="checkbox" name="subscribe" id="subscribe" value="subscribe" style="width: auto;" tabindex="6"> <label class="subscribe-label" id="subscribe-label" for="subscribe" style="display: inline;">Notify me of new comments via email.</label></p></div>
+
+
+
+
+<p class="form-submit" style="display: none;"><input name="submit" type="submit" id="comment-submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="622" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="4c55e5dcef"></p>
+<input type="hidden" name="genseq" value="1457627758">
+<p style="display: none;"></p>				<input type="hidden" id="ak_js" name="ak_js" value="1457627760019"></form>
+					</div><!-- #respond -->
+		<div style="clear: both"></div>
+</div><!-- #comments -->
+
+		
+		</div><!-- end #content -->
+	</div><!-- end #primary -->
+
+	
+	<!-- #secondary .widget-area -->
+
+
+		</div>
+</body></html>
