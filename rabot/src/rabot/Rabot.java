@@ -42,8 +42,6 @@ public class Rabot {
 				}else
 				if(left.get("click")!=null){
 					util.click();
-
-					//util.vk();
 				}else
 				if(left.get("type")!=null){
 					String s = left.get("type").getAsString();
@@ -90,109 +88,123 @@ class util{
 	private static void doType(String s,boolean cutNpaste) {
 		char[] chars = s.toCharArray();
 		for (char c : chars) {
-			char sister = sisterKey(c);
-			if(sister!='1'){
-				r().keyPress(c);
-				r().keyRelease(c);
-			}
-			else{
-				r().keyPress(20);
-				r().keyRelease(20);
+			int[]codes=getCode(c);
+			if(codes.length==2){
+				System.out.println("shift " + codes[1]);
+				r().keyPress(codes[0]);
+				r().keyPress(codes[1]);
+				r().keyRelease(codes[1]);
+				r().keyRelease(codes[0]);				
+			}else{
+				System.out.println(codes[0]);
 				
-				r().keyPress(sister);
-				r().keyRelease(sister);
-				
-				r().keyPress(20);
-				r().keyRelease(20);
-			}
-			
-			
+				r().keyPress(codes[0]);
+				r().keyRelease(codes[0]);
+			}		
 		}
 	}
-//	public static void vk(){
-//		Map<Integer,String> keyTextToCode = new HashMap<Integer,String>(256);
-//		java.lang.reflect.Field[] fields = KeyEvent.class.getDeclaredFields();
-//		for (java.lang.reflect.Field field : fields) {
-//		    String name = field.getName();
-//		    if (name.startsWith("VK_")) {
-//		        try {
-//					keyTextToCode.put(field.getInt(null),name.substring("VK_".length()).toUpperCase());
-//				} catch (IllegalArgumentException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				} catch (IllegalAccessException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//		    }
-//		}
-//		Set keys = keyTextToCode.keySet();
-//		for(Object key:keys){
-//			//int 
-//			System.out.println(key+" : "+keyTextToCode.get(key));
-//			try {
-//				Object o = KeyEvent.class.getField("VK_"+keyTextToCode.get(key) );
-//				System.out.println(o);
-//			} catch (NoSuchFieldException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			} catch (SecurityException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//			//System.out.println("res:"+o);
-//		}
-//		//return "";
-//		
-//		
-//	}
-	private static char sisterKey(char charCode){
-		if(charCode=='~') return '`';
-		if(charCode=='!') return '1';
-		if(charCode=='@') return '2';
-		if(charCode=='#') return '3';
-		if(charCode=='$') return '4';
-		if(charCode=='%') return '5';
-		if(charCode=='^') return '6';
-		if(charCode=='&') return '7';
-		if(charCode=='*') return '8';
-		if(charCode=='(') return '9';
-		if(charCode==')') return '0';
-		if(charCode=='_') return '-';
-		if(charCode=='+') return '=';
-		if(charCode=='Q') return 'q';
-		if(charCode=='W') return 'w';
-		if(charCode=='E') return 'e';
-		if(charCode=='R') return 'r';
-		if(charCode=='T') return 't';
-		if(charCode=='Y') return 'y';
-		if(charCode=='U') return 'u';
-		if(charCode=='I') return 'i';
-		if(charCode=='O') return 'o';
-		if(charCode=='P') return 'p';
-		if(charCode=='{') return '[';
-		if(charCode=='}') return ']';
-		if(charCode=='A') return 'a';
-		if(charCode=='S') return 's';
-		if(charCode=='D') return 'd';
-		if(charCode=='F') return 'f';
-		if(charCode=='G') return 'g';
-		if(charCode=='H') return 'h';
-		if(charCode=='J') return 'j';
-		if(charCode=='K') return 'k';
-		if(charCode=='L') return 'l';
-		if(charCode==':') return ';';
-		if(charCode=='"') return '\'';
-		if(charCode=='Z') return 'z';
-		if(charCode=='X') return 'x';
-		if(charCode=='C') return 'c';
-		if(charCode=='V') return 'v';
-		if(charCode=='B') return 'b';
-		if(charCode=='N') return 'n';
-		if(charCode=='M') return 'm';
-		if(charCode=='<') return ',';
-		if(charCode=='>') return '.';
-		if(charCode=='?') return '/';
-		return '1';
-	}
+	public static int[] getCode(char character) {
+        switch (character) {
+        case 'a': return new int[]{KeyEvent.VK_A};
+        case 'b': return new int[]{KeyEvent.VK_B};
+        case 'c': return new int[]{KeyEvent.VK_C};
+        case 'd': return new int[]{KeyEvent.VK_D};
+        case 'e': return new int[]{KeyEvent.VK_E};
+        case 'f': return new int[]{KeyEvent.VK_F};
+        case 'g': return new int[]{KeyEvent.VK_G};
+        case 'h': return new int[]{KeyEvent.VK_H};
+        case 'i': return new int[]{KeyEvent.VK_I};
+        case 'j': return new int[]{KeyEvent.VK_J};
+        case 'k': return new int[]{KeyEvent.VK_K};
+        case 'l': return new int[]{KeyEvent.VK_L};
+        case 'm': return new int[]{KeyEvent.VK_M};
+        case 'n': return new int[]{KeyEvent.VK_N};
+        case 'o': return new int[]{KeyEvent.VK_O};
+        case 'p': return new int[]{KeyEvent.VK_P};
+        case 'q': return new int[]{KeyEvent.VK_Q};
+        case 'r': return new int[]{KeyEvent.VK_R};
+        case 's': return new int[]{KeyEvent.VK_S};
+        case 't': return new int[]{KeyEvent.VK_T};
+        case 'u': return new int[]{KeyEvent.VK_U};
+        case 'v': return new int[]{KeyEvent.VK_V};
+        case 'w': return new int[]{KeyEvent.VK_W};
+        case 'x': return new int[]{KeyEvent.VK_X};
+        case 'y': return new int[]{KeyEvent.VK_Y};
+        case 'z': return new int[]{KeyEvent.VK_Z};
+        case 'A': return new int[]{KeyEvent.VK_SHIFT, KeyEvent.VK_A};
+        case 'B': return new int[]{KeyEvent.VK_SHIFT, KeyEvent.VK_B};
+        case 'C': return new int[]{KeyEvent.VK_SHIFT, KeyEvent.VK_C};
+        case 'D': return new int[]{KeyEvent.VK_SHIFT, KeyEvent.VK_D};
+        case 'E': return new int[]{KeyEvent.VK_SHIFT, KeyEvent.VK_E};
+        case 'F': return new int[]{KeyEvent.VK_SHIFT, KeyEvent.VK_F};
+        case 'G': return new int[]{KeyEvent.VK_SHIFT, KeyEvent.VK_G};
+        case 'H': return new int[]{KeyEvent.VK_SHIFT, KeyEvent.VK_H};
+        case 'I': return new int[]{KeyEvent.VK_SHIFT, KeyEvent.VK_I};
+        case 'J': return new int[]{KeyEvent.VK_SHIFT, KeyEvent.VK_J};
+        case 'K': return new int[]{KeyEvent.VK_SHIFT, KeyEvent.VK_K};
+        case 'L': return new int[]{KeyEvent.VK_SHIFT, KeyEvent.VK_L};
+        case 'M': return new int[]{KeyEvent.VK_SHIFT, KeyEvent.VK_M};
+        case 'N': return new int[]{KeyEvent.VK_SHIFT, KeyEvent.VK_N};
+        case 'O': return new int[]{KeyEvent.VK_SHIFT, KeyEvent.VK_O};
+        case 'P': return new int[]{KeyEvent.VK_SHIFT, KeyEvent.VK_P};
+        case 'Q': return new int[]{KeyEvent.VK_SHIFT, KeyEvent.VK_Q};
+        case 'R': return new int[]{KeyEvent.VK_SHIFT, KeyEvent.VK_R};
+        case 'S': return new int[]{KeyEvent.VK_SHIFT, KeyEvent.VK_S};
+        case 'T': return new int[]{KeyEvent.VK_SHIFT, KeyEvent.VK_T};
+        case 'U': return new int[]{KeyEvent.VK_SHIFT, KeyEvent.VK_U};
+        case 'V': return new int[]{KeyEvent.VK_SHIFT, KeyEvent.VK_V};
+        case 'W': return new int[]{KeyEvent.VK_SHIFT, KeyEvent.VK_W};
+        case 'X': return new int[]{KeyEvent.VK_SHIFT, KeyEvent.VK_X};
+        case 'Y': return new int[]{KeyEvent.VK_SHIFT, KeyEvent.VK_Y};
+        case 'Z': return new int[]{KeyEvent.VK_SHIFT, KeyEvent.VK_Z};
+        case '`': return new int[]{KeyEvent.VK_BACK_QUOTE};
+        case '0': return new int[]{KeyEvent.VK_0};
+        case '1': return new int[]{KeyEvent.VK_1};
+        case '2': return new int[]{KeyEvent.VK_2};
+        case '3': return new int[]{KeyEvent.VK_3};
+        case '4': return new int[]{KeyEvent.VK_4};
+        case '5': return new int[]{KeyEvent.VK_5};
+        case '6': return new int[]{KeyEvent.VK_6};
+        case '7': return new int[]{KeyEvent.VK_7};
+        case '8': return new int[]{KeyEvent.VK_8};
+        case '9': return new int[]{KeyEvent.VK_9};
+        case '-': return new int[]{KeyEvent.VK_MINUS};
+        case '=': return new int[]{KeyEvent.VK_EQUALS};
+        case '~': return new int[]{KeyEvent.VK_SHIFT, KeyEvent.VK_BACK_QUOTE};
+        case '!': return new int[]{KeyEvent.VK_SHIFT, KeyEvent.VK_1};
+        case '@': return new int[]{KeyEvent.VK_SHIFT, KeyEvent.VK_2};
+        case '#': return new int[]{KeyEvent.VK_SHIFT, KeyEvent.VK_3};
+        case '$': return new int[]{KeyEvent.VK_SHIFT, KeyEvent.VK_4};
+        case '%': return new int[]{KeyEvent.VK_SHIFT, KeyEvent.VK_5};
+        case '^': return new int[]{KeyEvent.VK_SHIFT, KeyEvent.VK_6};
+        case '&': return new int[]{KeyEvent.VK_SHIFT, KeyEvent.VK_7};
+        case '*': return new int[]{KeyEvent.VK_SHIFT, KeyEvent.VK_8};
+        case '(': return new int[]{KeyEvent.VK_SHIFT, KeyEvent.VK_9};
+        case ')': return new int[]{KeyEvent.VK_SHIFT, KeyEvent.VK_0};
+        case '_': return new int[]{KeyEvent.VK_SHIFT, KeyEvent.VK_MINUS};
+        case '+': return new int[]{KeyEvent.VK_SHIFT, KeyEvent.VK_EQUALS};
+        case '\t':return new int[]{KeyEvent.VK_TAB};
+        case '\n':return new int[]{KeyEvent.VK_ENTER};
+        case '[': return new int[]{KeyEvent.VK_OPEN_BRACKET};
+        case ']': return new int[]{KeyEvent.VK_CLOSE_BRACKET};
+        case '\\':return new int[]{KeyEvent.VK_BACK_SLASH};
+        case '{': return new int[]{KeyEvent.VK_SHIFT, KeyEvent.VK_OPEN_BRACKET};
+        case '}': return new int[]{KeyEvent.VK_SHIFT, KeyEvent.VK_CLOSE_BRACKET};
+        case '|': return new int[]{KeyEvent.VK_SHIFT, KeyEvent.VK_BACK_SLASH};
+        case ';': return new int[]{KeyEvent.VK_SEMICOLON};
+        case ':': return new int[]{KeyEvent.VK_SHIFT, KeyEvent.VK_SEMICOLON};
+        case '\'':return new int[]{KeyEvent.VK_QUOTE};
+        case '"': return new int[]{KeyEvent.VK_SHIFT, KeyEvent.VK_QUOTE};
+        case ',': return new int[]{KeyEvent.VK_COMMA};
+        case '<': return new int[]{KeyEvent.VK_SHIFT, KeyEvent.VK_COMMA};
+        case '.': return new int[]{KeyEvent.VK_PERIOD};
+        case '>': return new int[]{KeyEvent.VK_SHIFT, KeyEvent.VK_PERIOD};
+        case '/': return new int[]{KeyEvent.VK_SLASH};
+        case '?': return new int[]{KeyEvent.VK_SHIFT, KeyEvent.VK_SLASH};
+        case ' ': return new int[]{KeyEvent.VK_SPACE};
+        default:
+            throw new IllegalArgumentException("Cannot type character " + character);
+        }
+    }
+
 }
